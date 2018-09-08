@@ -21,8 +21,8 @@ export class LoginPage {
               public navParams: NavParams,
               public up: UsuarioProvider,
               public alertCtrl: AlertController) {
-    this.user = new Usuario('', '', '', '', '', 'ROLE_USER', true);
-    this.user_register = new Usuario('', '', '', '', '', 'ROLE_USER', true);
+    this.user = new Usuario('', '', '', '', '', 'USER_ROLE', true);
+    this.user_register = new Usuario('', '', '', '', '', 'USER_ROLE', true);
   }
 
   ionViewDidLoad() {
@@ -31,7 +31,8 @@ export class LoginPage {
 
   submitLogin() {
     this.up.loginProcess(this.user, 'login').subscribe(
-      (res) => {
+      (res: any) => {
+        console.log(res);
         this.identity = res.usuario;
         this.token = res.token;
         this.errorMsg = null;
@@ -40,7 +41,7 @@ export class LoginPage {
         localStorage.setItem('identity', JSON.stringify(this.identity));
 
         console.log('Usuario logeado');
-      }, (err) => {
+      }, (err: any) => {
         this.errorMsg = <any>err;
 
         if (this.errorMsg) {
@@ -56,8 +57,9 @@ export class LoginPage {
   }
 
   submitRegister() {
-    this.up.loginProcess(this.user, 'registro').subscribe(
-      (res) => {
+    console.log(this.user_register);
+    this.up.loginProcess(this.user_register, 'registro').subscribe(
+      (res: any) => {
         console.log(res);
         this.identity = res.usuario;
         this.token = res.token;
@@ -67,7 +69,7 @@ export class LoginPage {
         localStorage.setItem('identity', JSON.stringify(this.identity));
 
         console.log('Usuario registrado');
-      }, (err) => {
+      }, (err: any) => {
         this.errorMsg = <any>err;
 
         if (this.errorMsg) {

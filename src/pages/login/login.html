@@ -5,9 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Login</ion-title>
+    <ion-title>CINEMATRIX</ion-title>
   </ion-navbar>
 
   <ion-toolbar no-border-top>
@@ -20,7 +19,6 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-
 </ion-header>
 
 
@@ -45,7 +43,27 @@
 
     <!-- Sección de registro -->
     <div *ngSwitchCase="'logup'">
-      Registro
+      <form #loginForm="ngForm" (ngSubmit)="submitRegister()">
+        <div class="field">
+          <input type="nombre" placeholder="Nombre" #nombre="ngModel" name="nombre" [(ngModel)]="user_register.nombre">
+        </div>
+
+        <div class="field">
+          <input type="email" placeholder="Correo" #email="ngModel" name="email" [(ngModel)]="user_register.email">
+        </div>
+
+        <div class="field">
+          <input type="date" placeholder="Fecha de nacimiento" #fecha_nacimiento="ngModel" name="fecha_nacimiento" [(ngModel)]="user_register.fecha_nacimiento">
+        </div>
+      
+        <div class="field">
+          <input type="password" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="user_register.password">
+        </div>
+      
+        <div padding>
+          <button type="submit" ion-button block>Entrar</button>
+        </div>
+      </form>
     </div>
   </div>
 </ion-content>
