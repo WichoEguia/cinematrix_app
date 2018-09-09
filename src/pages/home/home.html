@@ -20,13 +20,26 @@
 
 <ion-content padding>
   <div *ngIf="identity">
-    <h3>Ionic Menu Starter</h3>
-  
-    <p>
-      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-    </p>
-  
-    <button ion-button secondary menuToggle>Toggle Menu</button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 *ngFor="let pelicula of peliculas">
+
+          <ion-card>
+            <img src="{{ url + pelicula.image }}" *ngIf="pelicula.image">
+            <img src="{{ url }}imagen/pelicula/123" *ngIf="!pelicula.image">
+            <ion-card-content>
+              <ion-card-header>
+                {{ pelicula.titulo }}
+              </ion-card-header>
+
+              <p>{{ pelicula.director }}</p>
+              <p>{{ pelicula.duracion }}</p>
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
   <div *ngIf="!identity">

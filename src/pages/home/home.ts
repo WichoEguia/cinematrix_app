@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AlertController } from 'ionic-angular';
+import { PeliculaProvider } from '../../providers/pelicula/pelicula';
+import { GLOBAL } from '../../providers/global';
 
 @Component({
   selector: 'page-home',
@@ -15,16 +17,25 @@ export class HomePage {
   public identity;
   public token;
   public errorMsg: string;
+  public peliculas: any[];
+  public url: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public up: UsuarioProvider,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public pp: PeliculaProvider) {
+    this.url = GLOBAL.url;
+
     this.user = new Usuario('', '', '', '', '', 'USER_ROLE', true);
     this.user_register = new Usuario('', '', '', '', '', 'USER_ROLE', true);
 
     this.identity = this.up.getIdentity();
     this.token = this.up.getToken();
+
+    if (this.identity) {
+      this.obtenerPeliculas();
+    }
   }
 
   ionViewDidLoad() {
@@ -41,6 +52,7 @@ export class HomePage {
         localStorage.setItem('token', res.token);
         localStorage.setItem('identity', JSON.stringify(this.identity));
 
+        this.obtenerPeliculas();
         console.log('Usuario logeado');
       }, (err: any) => {
         this.errorMsg = <any>err;
@@ -69,6 +81,7 @@ export class HomePage {
         localStorage.setItem('token', res.token);
         localStorage.setItem('identity', JSON.stringify(this.identity));
 
+        this.obtenerPeliculas();
         console.log('Usuario registrado');
       }, (err: any) => {
         this.errorMsg = <any>err;
@@ -92,5 +105,15 @@ export class HomePage {
     this.token = null;
     this.user = new Usuario('', '', '', '', '', 'ROLE_USER', true);
     this.user_register = new Usuario('', '', '', '', '', 'ROLE_USER', true);
+  }
+
+  obtenerPeliculas() {
+    this.pp.getPeliculas().subscribe(
+      (res: any) => {
+        this.peliculas = res.peliculas;
+      }, (err: any) => {
+        console.log(err);
+      }
+    );
   }
 }
