@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar *ngIf="identity">
+<ion-header *ngIf="identity">
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -12,10 +12,23 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+</ion-header>
 
-  <ion-navbar *ngIf="!identity">
+<ion-header no-border-top *ngIf="!identity">
+  <!-- <ion-navbar>
     <ion-title>CINEMATRIX</ion-title>
-  </ion-navbar>
+  </ion-navbar> -->
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="log_page">
+      <ion-segment-button value="login">
+        Entrar
+      </ion-segment-button>
+      <ion-segment-button value="logup">
+        Registrarse
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>

@@ -1,4 +1,8 @@
+let ENV = 'dev'
+
+let url = ENV === 'dev' ? 'http://localhost:3000/' : 'https://cinematrix-api.herokuapp.com/';
+
 export let GLOBAL = {
-    url: 'http://localhost:3000/',
+    url: url,
     ip: '127.0.0.1'
 };
