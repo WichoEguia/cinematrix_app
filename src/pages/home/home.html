@@ -25,8 +25,7 @@
         <ion-col col-12 *ngFor="let pelicula of peliculas">
 
           <ion-card>
-            <img src="{{ url + pelicula.image }}" *ngIf="pelicula.image">
-            <img src="{{ url }}imagen/pelicula/123" *ngIf="!pelicula.image">
+            <img src="{{ url }}imagen/pelicula/{{pelicula.image}}">
             <ion-card-content>
               <ion-card-header>
                 {{ pelicula.titulo }}
