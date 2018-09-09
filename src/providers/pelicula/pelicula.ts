@@ -22,7 +22,11 @@ export class PeliculaProvider {
 
   getPeliculas() {
     const headers = new HttpHeaders({ 'token': this.getToken() });
-    console.log(headers);
     return this.http.get(this.url + 'peliculas/ver', { headers });
+  }
+
+  getDetallePelicula(pelicula) {
+    const headers = new HttpHeaders({ 'token': this.getToken() });
+    return this.http.get(this.url + 'peliculas/detalle/' + pelicula._id, { headers });
   }
 }

@@ -8,7 +8,7 @@
 
     <ion-buttons end>
       <button ion-button (click)="logOut()">
-        <ion-icon name="log-out"></ion-icon>
+        <ion-icon name="exit"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -39,13 +39,19 @@
 
           <ion-card>
             <img src="{{ url }}imagen/pelicula/{{pelicula.image}}">
-            <ion-card-content>
+            <ion-card-content padding>
               <ion-card-header>
                 {{ pelicula.titulo }}
               </ion-card-header>
 
               <p>{{ pelicula.director }}</p>
               <p>{{ pelicula.duracion }}</p>
+
+              <ion-fab bottom right margin>
+                <button ion-fab (click)="verDetallePelicula(pelicula)">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-fab>
             </ion-card-content>
           </ion-card>
 
@@ -55,6 +61,7 @@
   </div>
 
   <div *ngIf="!identity">
+    <p style="font-size: 3rem; text-align: center;">CINEMATRIX</p>
     <div [ngSwitch]="log_page">
       <!-- Sección de login -->
       <div *ngSwitchCase="'login'">

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>detallePelicula</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-background-page">
+  <ion-card>
+    <img src="{{ url }}imagen/pelicula/{{pelicula.image}}" />
+    <div class="card-title">{{ pelicula.titulo }}</div>
+    <div class="card-subtitle">{{ pelicula.director }}</div>
+  </ion-card>
+  <p>{{ pelicula.sinopsis }}</p>
+  <p>Duración: {{ pelicula.duracion }}</p>
+  <p>Clasificación: {{ pelicula.clasificacion }}</p>
+</ion-content>

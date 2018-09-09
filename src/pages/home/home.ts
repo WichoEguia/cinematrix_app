@@ -5,6 +5,7 @@ import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AlertController } from 'ionic-angular';
 import { PeliculaProvider } from '../../providers/pelicula/pelicula';
 import { GLOBAL } from '../../providers/global';
+import { DetallePeliculaPage } from '../detalle-pelicula/detalle-pelicula';
 
 @Component({
   selector: 'page-home',
@@ -19,6 +20,7 @@ export class HomePage {
   public errorMsg: string;
   public peliculas: any[];
   public url: string;
+  public detallePelicula;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -36,10 +38,6 @@ export class HomePage {
     if (this.identity) {
       this.obtenerPeliculas();
     }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   submitLogin() {
@@ -115,5 +113,11 @@ export class HomePage {
         console.log(err);
       }
     );
+  }
+
+  verDetallePelicula(pelicula) {
+    this.navCtrl.push(DetallePeliculaPage, {
+      data: pelicula
+    });
   }
 }

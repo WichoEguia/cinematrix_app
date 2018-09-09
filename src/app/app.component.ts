@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,14 +13,23 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  public token;
+  public identity;
+
+  constructor(public platform: Platform,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              public up: UsuarioProvider) {
     this.initializeApp();
+    
+    this.token = this.up.getToken();
+    this.identity = this.up.getIdentity();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Cartelera', component: HomePage }
+      { title: 'Cartelera', component: HomePage, icon: 'film' }
     ];
 
   }
@@ -36,6 +46,8 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    this.token = this.up.getToken();
+    this.identity = this.up.getIdentity();
     this.nav.setRoot(page.component);
   }
 }
