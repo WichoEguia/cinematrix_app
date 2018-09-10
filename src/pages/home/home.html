@@ -1,20 +1,14 @@
-<ion-header *ngIf="identity">
+<ion-header *ngIf="up.getIdentity()">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 
     <ion-title>Cartelera</ion-title>
-
-    <ion-buttons end>
-      <button ion-button (click)="logOut()">
-        <ion-icon name="exit"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-header no-border-top *ngIf="!identity">
+<ion-header no-border-top *ngIf="!up.getIdentity()">
   <!-- <ion-navbar>
     <ion-title>CINEMATRIX</ion-title>
   </ion-navbar> -->
@@ -32,10 +26,10 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="identity">
+  <div *ngIf="up.getIdentity()">
     <ion-grid>
       <ion-row>
-        <ion-col col-12 *ngFor="let pelicula of peliculas">
+        <ion-col col-12 col-lg-12 *ngFor="let pelicula of peliculas">
 
           <ion-card>
             <img src="{{ url }}imagen/pelicula/{{pelicula.image}}">
@@ -60,7 +54,7 @@
     </ion-grid>
   </div>
 
-  <div *ngIf="!identity">
+  <div *ngIf="!up.getIdentity()">
     <p style="font-size: 3rem; text-align: center;">CINEMATRIX</p>
     <div [ngSwitch]="log_page">
       <!-- Sección de login -->

@@ -35,7 +35,7 @@ export class HomePage {
     this.identity = this.up.getIdentity();
     this.token = this.up.getToken();
 
-    if (this.identity) {
+    if (this.up.getIdentity()) {
       this.obtenerPeliculas();
     }
   }

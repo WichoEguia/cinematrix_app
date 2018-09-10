@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" *ngIf="up.getIdentity()">
   <ion-header>
     <ion-toolbar>
       <ion-title>Cinematrix</ion-title>
@@ -10,6 +10,10 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon name="{{ p.icon }}" style="margin-right: 10px"></ion-icon>
         {{ p.title }}
+      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="logOut()">
+        <ion-icon name="exit" style="margin-right: 10px"></ion-icon>
+        Salir
       </button>
     </ion-list>
   </ion-content>

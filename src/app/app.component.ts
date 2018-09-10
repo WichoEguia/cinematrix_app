@@ -15,17 +15,11 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: any}>;
 
-  public token;
-  public identity;
-
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public up: UsuarioProvider) {
     this.initializeApp();
-    
-    this.token = this.up.getToken();
-    this.identity = this.up.getIdentity();
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -46,8 +40,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.token = this.up.getToken();
-    this.identity = this.up.getIdentity();
     this.nav.setRoot(page.component);
+  }
+
+  logOut() {
+    localStorage.removeItem('identity');
+    localStorage.removeItem('token');
   }
 }
