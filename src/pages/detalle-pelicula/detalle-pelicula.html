@@ -6,11 +6,13 @@
 
 <ion-content padding class="card-background-page">
   <ion-card>
-    <img src="{{ url }}imagen/pelicula/{{pelicula.image}}" />
+    <img src="{{ url }}imagen/pelicula/{{pelicula.image}}?token={{ token }}" />
     <div class="card-title">{{ pelicula.titulo }}</div>
     <div class="card-subtitle">{{ pelicula.director }}</div>
   </ion-card>
   <p>{{ pelicula.sinopsis }}</p>
   <p>Duración: {{ pelicula.duracion }}</p>
   <p>Clasificación: {{ pelicula.clasificacion }}</p>
+
+  <button ion-button full clear>Funcioines disponibles</button>
 </ion-content>
