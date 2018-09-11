@@ -11,12 +11,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
 import { PeliculaProvider } from '../providers/pelicula/pelicula';
+import { FuncionesPage } from '../pages/funciones/funciones';
+import { FuncionesProvider } from '../providers/funciones/funciones';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    DetallePeliculaPage
+    DetallePeliculaPage,
+    FuncionesPage
   ],
   imports: [
     BrowserModule,
@@ -27,14 +30,16 @@ import { PeliculaProvider } from '../providers/pelicula/pelicula';
   entryComponents: [
     MyApp,
     HomePage,
-    DetallePeliculaPage
+    DetallePeliculaPage,
+    FuncionesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
-    PeliculaProvider
+    PeliculaProvider,
+    FuncionesProvider
   ]
 })
 export class AppModule {}

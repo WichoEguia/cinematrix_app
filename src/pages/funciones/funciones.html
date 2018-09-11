@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Funciones</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let funcion of funciones">
+      <div>
+        <p>{{ funcion.pelicula.titulo }}</p>
+        <p>Idioma: {{funcion.pelicula.idioma}} ({{ funcion.estado_idioma }})</p>
+        <p>Sala: {{ funcion.sala }}</p>
+        <p>Hora: {{ funcion.hora }}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

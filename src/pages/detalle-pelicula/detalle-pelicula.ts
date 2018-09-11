@@ -3,6 +3,7 @@ import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angu
 import { PeliculaProvider } from '../../providers/pelicula/pelicula';
 import { GLOBAL } from '../../providers/global';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { FuncionesPage } from '../funciones/funciones';
 
 @IonicPage()
 @Component({
@@ -33,7 +34,6 @@ export class DetallePeliculaPage {
   }
 
   verDetallePelicula(pelicula) {
-    console.log(pelicula);
     this.pp.getDetallePelicula(pelicula).subscribe(
       (res: any) => {
         this.pelicula = res.pelicula;
@@ -43,4 +43,9 @@ export class DetallePeliculaPage {
     );
   }
 
+  verFuncionesPelicula(pelicula) {
+    this.modalCtrl.create(FuncionesPage, {
+      idPelicula: pelicula._id 
+    }).present();
+  }
 }
