@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AlertController } from 'ionic-angular';
@@ -26,7 +26,8 @@ export class HomePage {
               public navParams: NavParams,
               public up: UsuarioProvider,
               public alertCtrl: AlertController,
-              public pp: PeliculaProvider) {
+              public pp: PeliculaProvider,
+              public menuCtrl: MenuController) {
     this.url = GLOBAL.url;
 
     this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
@@ -52,6 +53,8 @@ export class HomePage {
 
         this.obtenerPeliculas();
         console.log('Usuario logeado');
+        this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
+        this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
       }, (err: any) => {
         this.errorMsg = <any>err;
 
@@ -81,6 +84,8 @@ export class HomePage {
 
         this.obtenerPeliculas();
         console.log('Usuario registrado');
+        this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
+        this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
       }, (err: any) => {
         this.errorMsg = <any>err;
 
