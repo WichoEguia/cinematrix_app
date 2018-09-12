@@ -12,6 +12,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  public showMenu: any;
 
   pages: Array<{title: string, component: any, icon: any}>;
 
@@ -41,6 +42,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  ionViewWillWnter() {
+    // this.showMenu = this.up.getIdentity();
   }
 
   logOut() {

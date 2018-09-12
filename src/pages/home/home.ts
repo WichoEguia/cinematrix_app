@@ -29,8 +29,8 @@ export class HomePage {
               public pp: PeliculaProvider) {
     this.url = GLOBAL.url;
 
-    this.user = new Usuario('', '', '', '', '', 'USER_ROLE', true);
-    this.user_register = new Usuario('', '', '', '', '', 'USER_ROLE', true);
+    this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
+    this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
 
     this.identity = this.up.getIdentity();
     this.token = this.up.getToken();
@@ -101,8 +101,8 @@ export class HomePage {
     localStorage.removeItem('token');
     this.identity = null;
     this.token = null;
-    this.user = new Usuario('', '', '', '', '', 'ROLE_USER', true);
-    this.user_register = new Usuario('', '', '', '', '', 'ROLE_USER', true);
+    this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
+    this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
   }
 
   obtenerPeliculas() {

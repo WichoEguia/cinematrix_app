@@ -15,10 +15,9 @@
   <ion-list>
     <ion-item *ngFor="let funcion of funciones">
       <div>
-        <p>{{ funcion.pelicula.titulo }}</p>
-        <p>Idioma: {{funcion.pelicula.idioma}} ({{ funcion.estado_idioma }})</p>
+        <p>{{ funcion.pelicula.titulo }} | {{funcion.idioma}}</p>
         <p>Sala: {{ funcion.sala }}</p>
-        <p>Hora: {{ funcion.hora }}</p>
+        <p>Fcha de función: {{funcion.fecha}} {{ funcion.hora }}</p>
       </div>
     </ion-item>
   </ion-list>

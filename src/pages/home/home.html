@@ -9,10 +9,6 @@
 </ion-header>
 
 <ion-header no-border-top *ngIf="!up.getIdentity()">
-  <!-- <ion-navbar>
-    <ion-title>CINEMATRIX</ion-title>
-  </ion-navbar> -->
-
   <ion-toolbar>
     <ion-segment [(ngModel)]="log_page">
       <ion-segment-button value="login">
@@ -33,13 +29,11 @@
 
           <ion-card>
             <img src="{{ url }}imagen/pelicula/{{pelicula.image}}?token={{ token }}">
-            <ion-card-content padding>
+            <ion-card-content>
               <ion-card-header>
-                {{ pelicula.titulo }}
+                <p>{{ pelicula.titulo }}  |  {{ pelicula.duracion }}</p>
+                <p>{{ pelicula.director }}</p>
               </ion-card-header>
-
-              <p>{{ pelicula.director }}</p>
-              <p>{{ pelicula.duracion }}</p>
 
               <ion-fab bottom right margin>
                 <button ion-fab (click)="verDetallePelicula(pelicula)">
@@ -83,11 +77,6 @@
     
           <div class="field">
             <input type="email" placeholder="Correo" #email="ngModel" name="email" [(ngModel)]="user_register.email">
-          </div>
-    
-          <div class="field">
-            <input type="date" placeholder="Fecha de nacimiento" #fecha_nacimiento="ngModel" name="fecha_nacimiento"
-              [(ngModel)]="user_register.fecha_nacimiento">
           </div>
     
           <div class="field">
