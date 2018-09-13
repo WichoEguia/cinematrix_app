@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AlertController } from 'ionic-angular';
@@ -21,19 +21,21 @@ export class HomePage {
   public peliculas: any[];
   public url: string;
   public detallePelicula;
+  public repassword: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public up: UsuarioProvider,
               public alertCtrl: AlertController,
               public pp: PeliculaProvider,
-              public menuCtrl: MenuController) {
+              public menuCtrl: MenuController,
+              public loadingCtrl: LoadingController) {
     this.url = GLOBAL.url;
-
+    
     this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
     this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
-
-    this.identity = this.up.getIdentity();
+    
+    this.identity = JSON.parse(this.up.getIdentity());
     this.token = this.up.getToken();
 
     if (this.up.getIdentity()) {
@@ -42,8 +44,15 @@ export class HomePage {
   }
 
   submitLogin() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
+
     this.up.loginProcess(this.user, 'login').subscribe(
       (res: any) => {
+        loading.dismiss();
         this.identity = res.usuario;
         this.token = res.token;
         this.errorMsg = null;
@@ -53,9 +62,10 @@ export class HomePage {
 
         this.obtenerPeliculas();
         console.log('Usuario logeado');
-        this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
-        this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
+        this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
+        this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
       }, (err: any) => {
+        loading.dismiss();
         this.errorMsg = <any>err;
 
         if (this.errorMsg) {
@@ -71,34 +81,42 @@ export class HomePage {
   }
 
   submitRegister() {
-    console.log(this.user_register);
-    this.up.loginProcess(this.user_register, 'registro').subscribe(
-      (res: any) => {
-        console.log(res);
-        this.identity = res.usuario;
-        this.token = res.token;
-        this.errorMsg = null;
+    if (this.user_register.password === this.repassword) {
+      this.up.loginProcess(this.user_register, 'registro').subscribe(
+        (res: any) => {
+          console.log(res);
+          this.identity = res.usuario;
+          this.token = res.token;
+          this.errorMsg = null;
 
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('identity', JSON.stringify(this.identity));
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('identity', JSON.stringify(this.identity));
 
-        this.obtenerPeliculas();
-        console.log('Usuario registrado');
-        this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
-        this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
-      }, (err: any) => {
-        this.errorMsg = <any>err;
+          this.obtenerPeliculas();
+          console.log('Usuario registrado');
+          this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
+          this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
+          this.repassword = '';
+        }, (err: any) => {
+          this.errorMsg = <any>err;
 
-        if (this.errorMsg) {
-          this.errorMsg = err.error.err.message;
-          this.alertCtrl.create({
-            title: 'Fallo al logear',
-            subTitle: this.errorMsg,
-            buttons: ['OK']
-          }).present();
+          if (this.errorMsg) {
+            this.errorMsg = err.error.err.message;
+            this.alertCtrl.create({
+              title: 'Fallo al registrar',
+              subTitle: this.errorMsg,
+              buttons: ['OK']
+            }).present();
+          }
         }
-      }
-    );
+      );
+    } else {
+      this.alertCtrl.create({
+        title: 'Fallo al registrar',
+        subTitle: 'Contraseñas no coinciden :(',
+        buttons: ['OK']
+      }).present();
+    }
   }
 
   logOut() {
@@ -106,8 +124,8 @@ export class HomePage {
     localStorage.removeItem('token');
     this.identity = null;
     this.token = null;
-    this.user = new Usuario('', '', '', '', 'ROLE_USER', true);
-    this.user_register = new Usuario('', '', '', '', 'ROLE_USER', true);
+    this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
+    this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
   }
 
   obtenerPeliculas() {

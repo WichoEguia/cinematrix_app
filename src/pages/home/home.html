@@ -42,7 +42,6 @@
               </ion-fab>
             </ion-card-content>
           </ion-card>
-
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -81,6 +80,10 @@
     
           <div class="field">
             <input type="password" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="user_register.password">
+          </div>
+
+          <div class="field">
+            <input type="password" placeholder="Confirma tu contraseña" name="password" [(ngModel)]="repassword">
           </div>
     
           <div padding>

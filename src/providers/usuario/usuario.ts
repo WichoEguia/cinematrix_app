@@ -17,7 +17,7 @@ export class UsuarioProvider {
   }
 
   getIdentity() {
-    const identity = localStorage.getItem('identity') ? localStorage.getItem('identity') : null;
+    const identity = localStorage.getItem('identity') ? JSON.parse(localStorage.getItem('identity')) : null;
     return identity;
   }
 
