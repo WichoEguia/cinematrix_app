@@ -4,15 +4,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { GLOBAL } from '../providers/global';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  public showMenu: boolean;
+  public app_name: string;
 
   rootPage: any = HomePage;
-  public showMenu: boolean;
 
   pages: Array<{title: string, component: any, icon: any}>;
 
@@ -22,6 +24,7 @@ export class MyApp {
               public up: UsuarioProvider,
               public menuCtrl: MenuController) {
     this.initializeApp();
+    this.app_name = GLOBAL.app_name;
 
     // used for an example of ngFor and navigation
     this.pages = [

@@ -48,7 +48,7 @@
   </div>
 
   <div *ngIf="!up.getIdentity()">
-    <p style="font-size: 3rem; text-align: center;">CINEMATRIX</p>
+    <p style="font-size: 3rem; text-align: center;">{{ app_name }}</p>
     <div [ngSwitch]="log_page">
       <!-- Sección de login -->
       <div *ngSwitchCase="'login'">

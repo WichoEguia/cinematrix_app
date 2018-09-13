@@ -22,6 +22,7 @@ export class HomePage {
   public url: string;
   public detallePelicula;
   public repassword: string;
+  public app_name: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -31,6 +32,7 @@ export class HomePage {
               public menuCtrl: MenuController,
               public loadingCtrl: LoadingController) {
     this.url = GLOBAL.url;
+    this.app_name = GLOBAL.app_name;
     
     this.user = new Usuario('', '', '', '', 'USER_ROLE', true);
     this.user_register = new Usuario('', '', '', '', 'USER_ROLE', true);
