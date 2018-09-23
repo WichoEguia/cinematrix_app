@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FuncionesProvider } from '../../providers/funciones/funciones';
+import { GLOBAL } from '../../providers/global';
 
 @IonicPage()
 @Component({
@@ -10,12 +11,16 @@ import { FuncionesProvider } from '../../providers/funciones/funciones';
 export class FuncionesPage {
   public idPelicula: any;
   public funciones: any[];
+  public url: string = '';
+  public token: string = '';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl: ViewController,
               public fp: FuncionesProvider) {
     this.idPelicula = this.navParams.get('idPelicula');
+    this.url = GLOBAL.url;
+    this.token = this.fp.getToken();
 
     this.fp.getFunciones(this.idPelicula).subscribe((res: any) => {
       this.funciones = res.funciones;

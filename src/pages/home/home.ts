@@ -47,7 +47,7 @@ export class HomePage {
 
   submitLogin() {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Iniciando...'
     });
 
     loading.present();
