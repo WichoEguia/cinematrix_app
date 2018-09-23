@@ -4,16 +4,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="card-background-page">
+<ion-content class="card-background-page">
   <ion-card>
     <img src="{{ url }}imagen/pelicula/{{pelicula.image}}?token={{ token }}" />
     <div class="card-title">{{ pelicula.titulo }}</div>
     <div class="card-subtitle">{{ pelicula.director }}</div>
   </ion-card>
-  <p>{{ pelicula.sinopsis }}</p>
-  <p>Duración: {{ pelicula.duracion }}</p>
-  <p>Clasificación: {{ pelicula.clasificacion }}</p>
-  <p>Genero: {{ pelicula.genero }}</p>
 
-  <button ion-button full clear (click)="verFuncionesPelicula(pelicula)">Funcioines disponibles</button>
+  <div padding>
+    <p>{{ pelicula.sinopsis }}</p>
+    <p>Duración: {{ pelicula.duracion }}</p>
+    <p>Clasificación: {{ pelicula.clasificacion }}</p>
+    <p>Genero: {{ pelicula.genero }}</p>
+  
+    <button ion-button full clear (click)="verFuncionesPelicula(pelicula)">Funcioines disponibles</button>
+  </div>
 </ion-content>

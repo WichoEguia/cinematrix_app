@@ -5,21 +5,24 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DetallePeliculaPage } from '../pages/detalle-pelicula/detalle-pelicula';
+import { FuncionesPage } from '../pages/funciones/funciones';
+import { PedidoPage } from '../pages/pedido/pedido';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
 import { PeliculaProvider } from '../providers/pelicula/pelicula';
-import { FuncionesPage } from '../pages/funciones/funciones';
 import { FuncionesProvider } from '../providers/funciones/funciones';
+import { PedidosProvider } from '../providers/pedidos/pedidos';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     DetallePeliculaPage,
-    FuncionesPage
+    FuncionesPage,
+    PedidoPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { FuncionesProvider } from '../providers/funciones/funciones';
     MyApp,
     HomePage,
     DetallePeliculaPage,
-    FuncionesPage
+    FuncionesPage,
+    PedidoPage
   ],
   providers: [
     StatusBar,
@@ -39,7 +43,8 @@ import { FuncionesProvider } from '../providers/funciones/funciones';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
     PeliculaProvider,
-    FuncionesProvider
+    FuncionesProvider,
+    PedidosProvider
   ]
 })
 export class AppModule {}

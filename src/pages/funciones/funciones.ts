@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FuncionesProvider } from '../../providers/funciones/funciones';
+import { PedidoPage } from '../pedido/pedido';
 import { GLOBAL } from '../../providers/global';
 
 @IonicPage()
@@ -35,5 +36,11 @@ export class FuncionesPage {
 
   close() {
     this.viewCtrl.dismiss();
+  }
+
+  seleccionaFuncion(dataFuncion: any) {
+    this.navCtrl.push(PedidoPage, {
+      dataFuncion
+    });
   }
 }

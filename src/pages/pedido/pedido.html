@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Crear pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page">
+  <ion-card>
+    <img src="{{ url }}imagen/pelicula/{{funcion.pelicula.image}}?token={{ token }}" />
+    <div class="card-title">{{ funcion.pelicula.titulo }}</div>
+    <div class="card-subtitle">{{ funcion.pelicula.director }}</div>
+  </ion-card>
+
+  <div padding>
+    <h2>Función</h2>
+    
+    <p>Sala: {{ funcion.sala }}</p>
+    <p>Fcha: {{funcion.fecha}} | {{funcion.hora}}</p>
+    
+    <h2>Selecciona boletos</h2>
+    
+    <div id="seleccion_boletos">
+      <ion-list>
+        <ion-item *ngFor="let boleto of boletos">
+          {{ boleto._id }}
+        </ion-item>
+      </ion-list>
+    </div>
+    
+    <ion-buttons end>
+      <button ion-button outline>
+        finalizado
+      </button>
+    </ion-buttons>
+  </div>
+</ion-content>
