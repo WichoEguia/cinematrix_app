@@ -4,6 +4,7 @@ import { PeliculaProvider } from '../../providers/pelicula/pelicula';
 import { GLOBAL } from '../../providers/global';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { FuncionesPage } from '../funciones/funciones';
+import { PedidoPage } from '../pedido/pedido';
 
 @IonicPage()
 @Component({
@@ -44,8 +45,22 @@ export class DetallePeliculaPage {
   }
 
   verFuncionesPelicula(pelicula) {
-    this.modalCtrl.create(FuncionesPage, {
+    let funcionModal = this.modalCtrl.create(FuncionesPage, {
       idPelicula: pelicula._id 
-    }).present();
+    });
+
+    funcionModal.onDidDismiss((data) => {
+      if (data) {
+        this.seleccionaFuncion(data);
+      }
+    });
+
+    funcionModal.present();
+  }
+
+  seleccionaFuncion(dataFuncion: any) {
+    this.navCtrl.push(PedidoPage, {
+      dataFuncion
+    });
   }
 }
