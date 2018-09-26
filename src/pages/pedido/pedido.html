@@ -25,7 +25,27 @@
     <div id="seleccion_boletos">
       <ion-list>
         <ion-item *ngFor="let boleto of boletos">
-          {{ boleto._id }}
+          <div class="contenedor_tipo_boleto">
+            <div>
+
+              <span>{{ boleto.tipo.charAt(0).toUpperCase() + boleto.tipo.slice(1) }}</span>
+
+            </div>
+            <div>
+
+              <span class="precio_boleto">{{ boleto.precio }}</span>
+
+            </div>
+            <div class="row" justify-content-center>
+              <div class="row" justify-content-around>
+
+                <ion-icon name="remove-circle"></ion-icon>
+                <span class="cantidad_boleto">0</span>
+                <ion-icon name="add-circle"></ion-icon>
+
+              </div>
+            </div>
+          </div>
         </ion-item>
       </ion-list>
     </div>

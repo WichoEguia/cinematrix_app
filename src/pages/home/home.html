@@ -37,7 +37,7 @@
 
               <ion-fab bottom right margin>
                 <button ion-fab (click)="verDetallePelicula(pelicula)">
-                  <ion-icon name="list"></ion-icon>
+                  <ion-icon name="information"></ion-icon>
                 </button>
               </ion-fab>
             </ion-card-content>
@@ -48,7 +48,11 @@
   </div>
 
   <div *ngIf="!up.getIdentity()">
-    <p style="font-size: 3rem; text-align: center;">{{ app_name }}</p>
+    <!-- <p style="font-size: 3rem; text-align: center;">{{ app_name }}</p> -->
+    <div id="app_logo" class="row" justify-content-center>
+      <img src="../../assets/imgs/cinematrix.png">
+    </div>
+
     <div [ngSwitch]="log_page">
       <!-- Sección de login -->
       <div *ngSwitchCase="'login'">

@@ -45,4 +45,12 @@ page-pedido {
     .precio_boleto {
         color: color($colors, primary, base) !important;
     }
+
+    .contenedor_tipo_boleto {
+        display: flex;
+        
+        div {
+            flex: 1;
+        }
+    }
 }
