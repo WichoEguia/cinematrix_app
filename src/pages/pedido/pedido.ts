@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
+import { ProductosPage } from '../productos/productos';
 import { GLOBAL } from '../../providers/global';
 import * as $ from 'jquery'
 
@@ -18,7 +19,8 @@ export class PedidoPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public pedp: PedidosProvider) {
+              public pedp: PedidosProvider,
+              public modalCtrl: ModalController) {
     this.funcion = this.navParams.get('dataFuncion');
     this.url = GLOBAL.url;
     
@@ -28,7 +30,7 @@ export class PedidoPage {
     this.pedp.getBoletos().subscribe(
       (res: any) => {
         this.boletos = res.boletos;
-        console.log(this.boletos);
+        // console.log(this.boletos);
       },
       (err: any) => {
         console.log(err);
@@ -48,9 +50,15 @@ export class PedidoPage {
     }
   }
 
+  mostrarModalProductos() {
+    let productosModal = this.modalCtrl.create(ProductosPage);
+
+    productosModal.present();
+  }
+
   crearPedido() {
-    this.boletos.forEach(boleto => {
-      console.log(boleto._id + "," + $("#" + boleto.tipo).text());
-    });
+    // this.boletos.forEach(boleto => {
+    //   console.log(boleto._id + "," + $("#" + boleto.tipo).text());
+    // });
   }
 }

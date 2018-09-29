@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { DetallePeliculaPage } from '../pages/detalle-pelicula/detalle-pelicula';
 import { FuncionesPage } from '../pages/funciones/funciones';
 import { PedidoPage } from '../pages/pedido/pedido';
+import { ProductosPage } from '../pages/productos/productos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PeliculaProvider } from '../providers/pelicula/pelicula';
 import { FuncionesProvider } from '../providers/funciones/funciones';
 import { PedidosProvider } from '../providers/pedidos/pedidos';
+import { ProductosProvider } from '../providers/productos/productos';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     HomePage,
     DetallePeliculaPage,
     FuncionesPage,
-    PedidoPage
+    PedidoPage,
+    ProductosPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     HomePage,
     DetallePeliculaPage,
     FuncionesPage,
-    PedidoPage
+    PedidoPage,
+    ProductosPage
   ],
   providers: [
     StatusBar,
@@ -44,7 +48,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     UsuarioProvider,
     PeliculaProvider,
     FuncionesProvider,
-    PedidosProvider
+    PedidosProvider,
+    ProductosProvider
   ]
 })
 export class AppModule {}
