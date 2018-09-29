@@ -9,10 +9,34 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let producto of productos">
-      <p>{{ producto.nombre }}</p>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <h2>Selecciona tu snack</h2>
+
+  <ion-card padding class="contenedor_producto" *ngFor="let producto of productos">
+    <div>
+      <img class="imagen_producto" style="width: 100px; height: 100px;" src="{{ url }}imagen/producto/{{ producto.imagen }}?token={{ token }}">
+    </div>
+
+    <div>
+      <p class="grande">{{ producto.nombre }}</p>
+      <p>{{ producto.descripcion }}</p>
+      <p>Precio: {{ producto.precio }}</p>
+    </div>
+
+    <div class="row" justify-content-center>
+      <div class="row" justify-content-around align-items-center>
+        <button ion-button clear icon-only (click)="remueveProducto(producto._id)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      
+        <span id="{{ producto._id }}" class="cantidad_boleto">0</span>
+      
+        <button ion-button clear icon-only (click)="agregaProducto(producto._id)">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-card>
+
+  <button ion-button block outline>Listo</button>
 </ion-content>

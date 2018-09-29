@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { GLOBAL } from '../../providers/global';
 import { ProductosProvider } from '../../providers/productos/productos';
+import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -11,12 +12,14 @@ import { ProductosProvider } from '../../providers/productos/productos';
 export class ProductosPage {
   public url: string = '';
   public productos: any = '';
+  public token: string = '';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public prodp: ProductosProvider,
               public viewCtrl: ViewController) {
     this.url = GLOBAL.url;
+    this.token = this.prodp.getToken();
 
     this.prodp.getProductos().subscribe(
       (res: any) => {
@@ -31,6 +34,18 @@ export class ProductosPage {
 
   close(data: any = null) {
     this.viewCtrl.dismiss(data);
+  }
+
+  agregaProducto(id) {
+    let cantidadProductos = parseInt($("#" + id).text());
+    $("#" + id).text(cantidadProductos + 1);
+  }
+
+  remueveProducto(id) {
+    let cantidadProductos = parseInt($("#" + id).text());
+    if (cantidadProductos != 0) {
+      $("#" + id).text(cantidadProductos - 1);
+    }
   }
 
 }

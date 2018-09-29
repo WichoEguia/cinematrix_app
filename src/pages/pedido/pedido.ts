@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { ProductosPage } from '../productos/productos';
 import { GLOBAL } from '../../providers/global';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -38,15 +38,15 @@ export class PedidoPage {
     );
   }
 
-  agregaBoleto(tipo) {
-    let cantidadBoletos = parseInt($("#" + tipo).text());
-    $("#" + tipo).text(cantidadBoletos + 1);
+  agregaBoleto(id) {
+    let cantidadBoletos = parseInt($("#" + id).text());
+    $("#" + id).text(cantidadBoletos + 1);
   }
 
-  remueveBoleto(tipo) {
-    let cantidadBoletos = parseInt($("#" + tipo).text());
+  remueveBoleto(id) {
+    let cantidadBoletos = parseInt($("#" + id).text());
     if (cantidadBoletos != 0) {
-      $("#" + tipo).text(cantidadBoletos - 1);
+      $("#" + id).text(cantidadBoletos - 1);
     }
   }
 
@@ -58,7 +58,7 @@ export class PedidoPage {
 
   crearPedido() {
     // this.boletos.forEach(boleto => {
-    //   console.log(boleto._id + "," + $("#" + boleto.tipo).text());
+    //   console.log(boleto._id + "," + $("#" + boleto._id).text());
     // });
   }
 }

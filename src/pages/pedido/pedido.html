@@ -35,13 +35,13 @@
             <div class="row" justify-content-center>
               <div class="row" justify-content-around>
 
-                <button ion-button clear icon-only class="remueve_boleto" (click)="remueveBoleto(boleto.tipo)">
+                <button ion-button clear icon-only class="remueve_boleto" (click)="remueveBoleto(boleto._id)">
                   <ion-icon name="remove-circle"></ion-icon>
                 </button>
                 
-                <span id="{{ boleto.tipo }}" class="cantidad_boleto">0</span>
+                <span id="{{ boleto._id }}" class="cantidad_boleto">0</span>
 
-                <button ion-button clear icon-only class="agrega_boleto" (click)="agregaBoleto(boleto.tipo)">
+                <button ion-button clear icon-only class="agrega_boleto" (click)="agregaBoleto(boleto._id)">
                   <ion-icon name="add-circle"></ion-icon>
                 </button>
 
