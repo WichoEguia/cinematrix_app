@@ -39,9 +39,15 @@
             <div class="row" justify-content-center>
               <div class="row" justify-content-around>
 
-                <ion-icon name="remove-circle"></ion-icon>
-                <span class="cantidad_boleto">0</span>
-                <ion-icon name="add-circle"></ion-icon>
+                <button ion-button clear icon-only class="remueve_boleto" (click)="remueveBoleto(boleto.tipo)">
+                  <ion-icon name="remove-circle"></ion-icon>
+                </button>
+                
+                <span id="{{ boleto.tipo }}" class="cantidad_boleto">0</span>
+
+                <button ion-button clear icon-only class="agrega_boleto" (click)="agregaBoleto(boleto.tipo)">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
 
               </div>
             </div>
@@ -51,7 +57,7 @@
     </div>
     
     <ion-buttons end>
-      <button ion-button outline>
+      <button ion-button outline (click)="crearPedido()">
         finalizado
       </button>
     </ion-buttons>
