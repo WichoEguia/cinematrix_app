@@ -49,7 +49,7 @@ export class DetallePeliculaPage {
       idPelicula: pelicula._id 
     });
 
-    funcionModal.onDidDismiss((data) => {
+    funcionModal.onDidDismiss(data => {
       if (data) {
         this.seleccionaFuncion(data);
       }

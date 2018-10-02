@@ -16,6 +16,7 @@ export class PedidoPage {
   public url: string;
   public token: string;
   public identity: any;
+  public productosSeleccionados: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -30,7 +31,6 @@ export class PedidoPage {
     this.pedp.getBoletos().subscribe(
       (res: any) => {
         this.boletos = res.boletos;
-        // console.log(this.boletos);
       },
       (err: any) => {
         console.log(err);
@@ -53,12 +53,23 @@ export class PedidoPage {
   mostrarModalProductos() {
     let productosModal = this.modalCtrl.create(ProductosPage);
 
+    productosModal.onDidDismiss(data => {
+      if (data) {
+        this.productosSeleccionados = data;
+      }
+    });
+
     productosModal.present();
   }
 
   crearPedido() {
-    // this.boletos.forEach(boleto => {
-    //   console.log(boleto._id + "," + $("#" + boleto._id).text());
-    // });
+    let boletosSeleccionados = [];
+
+    this.boletos.forEach(boleto => {
+      boletosSeleccionados.push(boleto._id + "," + $("#" + boleto._id).text());
+    });
+
+    console.log(boletosSeleccionados);
+    console.log(this.productosSeleccionados);
   }
 }

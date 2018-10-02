@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <h2>Selecciona tu snack</h2>
 
   <ion-card padding class="contenedor_producto" *ngFor="let producto of productos">
@@ -38,5 +38,7 @@
     </div>
   </ion-card>
 
-  <button ion-button block outline>Listo</button>
+  <ion-buttons end>
+    <button ion-button outline (click)="seleccionaProductos()">Listo</button>
+  </ion-buttons>
 </ion-content>

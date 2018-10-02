@@ -13,6 +13,7 @@ export class ProductosPage {
   public url: string = '';
   public productos: any = '';
   public token: string = '';
+  public productosSeleccionados: any = [];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -48,4 +49,12 @@ export class ProductosPage {
     }
   }
 
+  seleccionaProductos() {
+    this.productos.forEach(producto => {
+      let cadenaProducto = producto._id + ',' + $("#" + producto._id).text();
+      this.productosSeleccionados.push(cadenaProducto);
+    });
+
+    this.close(this.productosSeleccionados);
+  }
 }
