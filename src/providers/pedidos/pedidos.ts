@@ -24,4 +24,9 @@ export class PedidosProvider {
     const headers = new HttpHeaders({ 'token': this.getToken() });
     return this.http.get(this.url + 'boletos/ver', { headers });
   }
+
+  getProductos() {
+    const headers = new HttpHeaders({ 'token': this.getToken() });
+    return this.http.get(this.url + 'productos/ver', { headers });
+  }
 }

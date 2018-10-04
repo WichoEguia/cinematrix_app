@@ -1,6 +1,6 @@
 page-pedido {
     .card-background-page {
-        ion-card {
+        ion-card:not(.contenedor_producto) {
             position: relative;
             text-align: center;
 

@@ -11,55 +11,99 @@
   <ion-card>
     <img src="{{ url }}imagen/pelicula/{{funcion.pelicula.image}}?token={{ token }}" />
     <div class="card-title">{{ funcion.pelicula.titulo }}</div>
-    <div class="card-subtitle">{{ funcion.pelicula.director }}</div>
+    <div class="card-subtitle">
+      <p>{{ funcion.pelicula.director }}</p>
+      <p>Sala: {{ funcion.sala }}</p>
+      <p>Fcha: {{funcion.fecha}} | {{funcion.hora}}</p>
+    </div>
   </ion-card>
 
-  <div padding>
-    <h2>Función</h2>
-    
-    <p>Sala: {{ funcion.sala }}</p>
-    <p>Fcha: {{funcion.fecha}} | {{funcion.hora}}</p>
-    
-    <h2>Selecciona boletos</h2>
-    
-    <div id="seleccion_boletos">
-      <ion-list>
-        <ion-item *ngFor="let boleto of boletos">
-          <div class="contenedor_tipo_boleto">
-            <div>
-              <span>{{ boleto.tipo.charAt(0).toUpperCase() + boleto.tipo.slice(1) }}</span>
-            </div>
-            <div>
-              <span class="precio_boleto">{{ boleto.precio }}</span>
-            </div>
-            <div class="row" justify-content-center>
-              <div class="row" justify-content-around>
+  <ion-segment [(ngModel)]="paso">
+    <ion-segment-button value="boletos">
+      <ion-icon name="film"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="productos">
+      <ion-icon name="cart"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="llegada">
+      <ion-icon name="clock"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="pago">
+      <ion-icon name="card"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
 
-                <button ion-button clear icon-only class="remueve_boleto" (click)="remueveBoleto(boleto._id)">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-                
-                <span id="{{ boleto._id }}" class="cantidad_boleto">0</span>
-
-                <button ion-button clear icon-only class="agrega_boleto" (click)="agregaBoleto(boleto._id)">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-
+  <div [ngSwitch]="paso">
+    <div *ngSwitchCase="'boletos'" padding>
+      <h2>Selecciona boletos</h2>
+      
+      <div id="seleccion_boletos">
+        <ion-list>
+          <ion-item *ngFor="let boleto of boletos">
+            <div class="contenedor_tipo_boleto">
+              <div>
+                <span>{{ boleto.nombre }}</span>
+              </div>
+              <div>
+                <span class="precio_boleto">${{ boleto.precio }}</span>
+              </div>
+              <div class="row" justify-content-center>
+                <div class="row" justify-content-around>
+      
+                  <button ion-button clear icon-only (click)="cantidadBoleto(boleto.id, false)">
+                    <ion-icon name="remove-circle"></ion-icon>
+                  </button>
+      
+                  <span>{{ boleto.cantidad }}</span>
+      
+                  <button ion-button clear icon-only (click)="cantidadBoleto(boleto.id, true)">
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+      
+                </div>
               </div>
             </div>
-          </div>
-        </ion-item>
-      </ion-list>
+          </ion-item>
+        </ion-list>
+      </div>
     </div>
 
-    <button ion-button block outline (click)="mostrarModalProductos()">
-      productos
-    </button>
-    
-    <ion-buttons end>
-      <button ion-button outline (click)="crearPedido()">
-        finalizado
-      </button>
-    </ion-buttons>
+    <div *ngSwitchCase="'productos'" padding>
+      <h2>Selecciona tu snack</h2>
+      
+      <ion-card padding class="contenedor_producto" *ngFor="let producto of productos">
+        <div>
+          <img class="imagen_producto" style="width: 100px; height: 100px;" src="{{ url }}imagen/producto/{{ producto.imagen }}?token={{ token }}">
+        </div>
+      
+        <div>
+          <p class="grande">{{ producto.nombre }}</p>
+          <p>{{ producto.descripcion }}</p>
+          <p>Precio: {{ producto.precio }}</p>
+        </div>
+      
+        <div class="row" justify-content-center>
+          <div class="row" justify-content-around align-items-center>
+            <button ion-button clear icon-only (click)="cantidadProducto(producto.id, false)">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+      
+            <span>{{ producto.cantidad }}</span>
+      
+            <button ion-button clear icon-only (click)="cantidadProducto(producto.id, true)">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'llegada'" padding>
+      Hora de llegada
+    </div>
+
+    <div *ngSwitchCase="'pago'" padding>
+      Termina el pago
+    </div>
   </div>
 </ion-content>
