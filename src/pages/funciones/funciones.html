@@ -12,17 +12,19 @@
 </ion-header>
 
 <ion-content>
+  <h2 padding>Selecciona tu función</h2>
   <ion-card *ngFor="let funcion of funciones">
 
-    <ion-card-content>
-      <p class="grande">Sala: <span class="important">{{ funcion.sala }}</span></p>
-      <p>Fcha de función: {{funcion.fecha}} | {{funcion.hora}}</p>
+    <ion-card-content class="contenedor_funcion">
+      <div>
+        <p class="grande">Sala: {{ funcion.sala }}</p>
+        <p class="grande">Fecha: {{funcion.fecha}}</p>
+        <p class="grande">Hora: {{funcion.hora}}</p>
+      </div>
 
-      <ion-buttons end style="margin-top: 10px;">
-        <button ion-button round outline icon-only (click)="close(funcion)">
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button ion-button clear (click)="close(funcion)">
+        seleccionar
+      </button>
     </ion-card-content>
 
   </ion-card>

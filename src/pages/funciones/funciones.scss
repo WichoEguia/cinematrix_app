@@ -4,11 +4,16 @@ page-funciones {
     }
 
     .grande {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
 
-    span.important {
+    .important {
         color: color($colors, primary, base);
         font-weight: bolder;
+    }
+
+    .contenedor_funcion {
+        display: flex;
+        justify-content: space-around;
     }
 }
