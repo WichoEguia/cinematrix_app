@@ -22,12 +22,16 @@
     <ion-segment-button value="boletos">
       <ion-icon name="film"></ion-icon>
     </ion-segment-button>
+
+    <ion-segment-button value="asientos">
+      <ion-icon name="clock"></ion-icon>
+    </ion-segment-button>
+    
     <ion-segment-button value="productos">
       <ion-icon name="cart"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="llegada">
-      <ion-icon name="clock"></ion-icon>
-    </ion-segment-button>
+
+
     <ion-segment-button value="pago">
       <ion-icon name="card"></ion-icon>
     </ion-segment-button>
@@ -67,6 +71,10 @@
         </ion-list>
       </div>
     </div>
+    
+    <div *ngSwitchCase="'asientos'" padding>
+      Hora de llegada
+    </div>
 
     <div *ngSwitchCase="'productos'" padding>
       <h2>Selecciona tu snack</h2>
@@ -98,10 +106,6 @@
           </div>
         </div>
       </ion-card>
-    </div>
-
-    <div *ngSwitchCase="'llegada'" padding>
-      Hora de llegada
     </div>
 
     <div *ngSwitchCase="'pago'" padding>
