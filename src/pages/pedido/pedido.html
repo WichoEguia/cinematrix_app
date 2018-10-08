@@ -75,15 +75,17 @@
     <div *ngSwitchCase="'asientos'" padding>
       <h2>Selecciona tus lugares</h2>
 
-      <div id="pantalla">
-        PANTALLA
+      <div id="contador_lugares_seleccionados">
+        <p>lugares disponibles: {{ boletosDisponibles }}</p>
       </div>
 
+      <div id="pantalla">PANTALLA</div>
       <div class="vista_asientos">
         <div *ngFor="let fila of sala; let i = index">
           <div *ngFor="let asiento of fila">
-            <input type="radio" name="asiento" id="asiento_{{ asiento.letter + asiento.val }}"
-                  [disabled]="asiento.seat"
+            <input type="checkbox" id="asiento_{{ asiento.letter + asiento.val }}"
+                  [disabled]="asiento.seat || boletosDisponibles <= 0"
+                  [checked]="asiento.check"
                   (click)="seleccionaAsiento(asiento)">
             <label for="asiento_{{ asiento.letter + asiento.val }}" [ngClass]="{'en_uso': asiento.seat == true}">
               {{ asiento.letter.toUpperCase() }}-{{ asiento.val }}

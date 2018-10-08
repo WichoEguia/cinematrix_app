@@ -83,6 +83,13 @@ page-pedido {
         margin: 10px 0;
     }
 
+    #contador_lugares_seleccionados {
+        color: color($colors, primary, base);
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: bolder;
+    }
+
     #pantalla {
         color: #fff;
         background: color($colors, primary, base);
@@ -93,7 +100,7 @@ page-pedido {
         border-radius: 4px;
     }
 
-    input[type="radio"] {
+    input[type="checkbox"] {
         display: none;
 
         & + label {
