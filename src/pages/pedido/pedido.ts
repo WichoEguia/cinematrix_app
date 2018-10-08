@@ -17,6 +17,107 @@ export class PedidoPage {
   public token: string;
   public identity: any;
   public productosSeleccionados: any;
+  public sala: any = [
+    [
+      {
+        val: 1,
+        letter: 'a',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'a',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'a',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'a',
+        check: false,
+        seat: false
+      }, {
+        val: 5,
+        letter: 'a',
+        check: false,
+        seat: false
+      }, {
+        val: 6,
+        letter: 'a',
+        check: false,
+        seat: false
+      }
+    ],
+    [
+      {
+        val: 1,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 5,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 6,
+        letter: 'b',
+        check: false,
+        seat: false
+      }
+    ],
+    [
+      {
+        val: 1,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 5,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 6,
+        letter: 'c',
+        check: false,
+        seat: false
+      }
+    ]
+  ];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -83,6 +184,16 @@ export class PedidoPage {
     } else {
       if (producto.cantidad != 0) {
         producto.cantidad--;
+      }
+    }
+  }
+
+  seleccionaAsiento(asiento) {
+    if (!asiento.seat) {
+      if (asiento.check) {
+        asiento.check = false;
+      } else {
+        asiento.check = true;
       }
     }
   }

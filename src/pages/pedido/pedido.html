@@ -24,9 +24,9 @@
     </ion-segment-button>
 
     <ion-segment-button value="asientos">
-      <ion-icon name="clock"></ion-icon>
+      <ion-icon name="videocam"></ion-icon>
     </ion-segment-button>
-    
+
     <ion-segment-button value="productos">
       <ion-icon name="cart"></ion-icon>
     </ion-segment-button>
@@ -73,7 +73,21 @@
     </div>
     
     <div *ngSwitchCase="'asientos'" padding>
-      Hora de llegada
+      <h2>Selecciona tus lugares</h2>
+
+      <div id="pantalla">
+        PANTALLA
+      </div>
+
+      <div class="vista_asientos">
+        <div *ngFor="let fila of sala; let i = index">
+          <a *ngFor="let asiento of fila"
+            [ngClass]="{'seleccionado': asiento.check == true, 'disponible': asiento.check == false, 'bloqueado': asiento.seat == true}"
+            (click)="seleccionaAsiento(asiento)">
+            {{ i + 1 }}-{{ asiento.letter }}
+          </a>
+        </div>
+      </div>
     </div>
 
     <div *ngSwitchCase="'productos'" padding>
@@ -109,7 +123,7 @@
     </div>
 
     <div *ngSwitchCase="'pago'" padding>
-      Termina el pago
+      <h2>Termina el pago</h2>
     </div>
   </div>
 </ion-content>
