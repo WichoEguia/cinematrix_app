@@ -52,105 +52,105 @@ export class PedidoPage {
         seat: false
       }
     ],
-    // [
-    //   {
-    //     val: 1,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: true
-    //   }, {
-    //     val: 2,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: true
-    //   }, {
-    //     val: 3,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: true
-    //   }, {
-    //     val: 4,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 5,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 6,
-    //     letter: 'b',
-    //     check: false,
-    //     seat: false
-    //   }
-    // ],
-    // [
-    //   {
-    //     val: 1,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 2,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 3,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 4,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 5,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 6,
-    //     letter: 'c',
-    //     check: false,
-    //     seat: false
-    //   }
-    // ],
-    // [
-    //   {
-    //     val: 1,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 2,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 3,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: false
-    //   }, {
-    //     val: 4,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: true
-    //   }, {
-    //     val: 5,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: true
-    //   }, {
-    //     val: 6,
-    //     letter: 'd',
-    //     check: false,
-    //     seat: false
-    //   }
-    // ]
+    [
+      {
+        val: 1,
+        letter: 'b',
+        check: false,
+        seat: true
+      }, {
+        val: 2,
+        letter: 'b',
+        check: false,
+        seat: true
+      }, {
+        val: 3,
+        letter: 'b',
+        check: false,
+        seat: true
+      }, {
+        val: 4,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 5,
+        letter: 'b',
+        check: false,
+        seat: false
+      }, {
+        val: 6,
+        letter: 'b',
+        check: false,
+        seat: false
+      }
+    ],
+    [
+      {
+        val: 1,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 5,
+        letter: 'c',
+        check: false,
+        seat: false
+      }, {
+        val: 6,
+        letter: 'c',
+        check: false,
+        seat: false
+      }
+    ],
+    [
+      {
+        val: 1,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'd',
+        check: false,
+        seat: true
+      }, {
+        val: 5,
+        letter: 'd',
+        check: false,
+        seat: true
+      }, {
+        val: 6,
+        letter: 'd',
+        check: false,
+        seat: false
+      }
+    ]
   ];
 
   constructor(public navCtrl: NavController,
@@ -228,8 +228,10 @@ export class PedidoPage {
     if (!asiento.seat) {
       if (asiento.check) {
         asiento.check = false;
+        this.boletosDisponibles++;
       } else {
         asiento.check = true;
+        this.boletosDisponibles--;
       }
     }
   }

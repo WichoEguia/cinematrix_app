@@ -92,7 +92,7 @@ page-pedido {
 
     #pantalla {
         color: #fff;
-        background: color($colors, primary, base);
+        background: color($colors, blue, base);
         width: 100%;
         padding: 5px 0;
         margin-bottom: 10px;
@@ -111,7 +111,7 @@ page-pedido {
             width: 30px;
             height: 35px;
             border-radius: 4px;
-            border: 1px solid color($colors, primary, base);
+            border: 1px solid color($colors, blue, base);
 
             &.en_uso {
                 color: grey;
@@ -121,7 +121,7 @@ page-pedido {
         }
 
         &:checked + label {
-            background: color($colors, primary, base);
+            background: color($colors, blue, base);
         }
     }
 }
