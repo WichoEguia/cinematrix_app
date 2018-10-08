@@ -56,17 +56,17 @@ export class PedidoPage {
         val: 1,
         letter: 'b',
         check: false,
-        seat: false
+        seat: true
       }, {
         val: 2,
         letter: 'b',
         check: false,
-        seat: false
+        seat: true
       }, {
         val: 3,
         letter: 'b',
         check: false,
-        seat: false
+        seat: true
       }, {
         val: 4,
         letter: 'b',
@@ -113,6 +113,39 @@ export class PedidoPage {
       }, {
         val: 6,
         letter: 'c',
+        check: false,
+        seat: false
+      }
+    ],
+    [
+      {
+        val: 1,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 2,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 3,
+        letter: 'd',
+        check: false,
+        seat: false
+      }, {
+        val: 4,
+        letter: 'd',
+        check: false,
+        seat: true
+      }, {
+        val: 5,
+        letter: 'd',
+        check: false,
+        seat: true
+      }, {
+        val: 6,
+        letter: 'd',
         check: false,
         seat: false
       }

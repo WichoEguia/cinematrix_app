@@ -84,7 +84,7 @@
           <a *ngFor="let asiento of fila"
             [ngClass]="{'seleccionado': asiento.check == true, 'disponible': asiento.check == false, 'bloqueado': asiento.seat == true}"
             (click)="seleccionaAsiento(asiento)">
-            {{ i + 1 }}-{{ asiento.letter }}
+            {{ asiento.letter.toUpperCase() }}-{{ i + 1 }}
           </a>
         </div>
       </div>
