@@ -23,12 +23,12 @@ export class PedidoPage {
         val: 1,
         letter: 'a',
         check: false,
-        seat: false
+        seat: true
       }, {
         val: 2,
         letter: 'a',
         check: false,
-        seat: false
+        seat: true
       }, {
         val: 3,
         letter: 'a',

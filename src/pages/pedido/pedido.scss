@@ -93,31 +93,28 @@ page-pedido {
         border-radius: 4px;
     }
 
-    a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        width: 30px;
-        height: 35px;
-        border-radius: 4px;
+    input[type="radio"] {
+        display: none;
 
-        &.seleccionado {
-            background: color($colors, primary, base);
-            color: white;
-            border: 0;
-        }
-
-        &.disponible {
-            color: color($colors, primary, base);
+        & + label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            width: 30px;
+            height: 35px;
+            border-radius: 4px;
             border: 1px solid color($colors, primary, base);
-            border-radius: 4px;
+
+            &.en_uso {
+                color: grey;
+                border: 1px solid grey;
+                border-radius: 4px;
+            }
         }
 
-        &.bloqueado {
-            color: grey;
-            border: 1px solid grey;
-            border-radius: 4px;
+        &:checked + label {
+            background: color($colors, primary, base);
         }
     }
 }

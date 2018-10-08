@@ -81,11 +81,14 @@
 
       <div class="vista_asientos">
         <div *ngFor="let fila of sala; let i = index">
-          <a *ngFor="let asiento of fila"
-            [ngClass]="{'seleccionado': asiento.check == true, 'disponible': asiento.check == false, 'bloqueado': asiento.seat == true}"
-            (click)="seleccionaAsiento(asiento)">
-            {{ asiento.letter.toUpperCase() }}-{{ i + 1 }}
-          </a>
+          <div *ngFor="let asiento of fila">
+            <input type="radio" name="asiento" id="asiento_{{ asiento.letter + asiento.val }}"
+                  [disabled]="asiento.seat"
+                  (click)="seleccionaAsiento(asiento)">
+            <label for="asiento_{{ asiento.letter + asiento.val }}" [ngClass]="{'en_uso': asiento.seat == true}">
+              {{ asiento.letter.toUpperCase() }}-{{ asiento.val }}
+            </label>
+          </div>
         </div>
       </div>
     </div>
