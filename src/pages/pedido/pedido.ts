@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { GLOBAL } from '../../providers/global';
+import { Asientos } from '../../models/asientos';
 
 @IonicPage()
 @Component({
@@ -18,140 +19,7 @@ export class PedidoPage {
   public identity: any;
   public productosSeleccionados: any;
   public boletosDisponibles: number = 0;
-  public sala: any = [
-    [
-      {
-        val: 1,
-        letter: 'a',
-        check: false,
-        seat: true
-      }, {
-        val: 2,
-        letter: 'a',
-        check: false,
-        seat: true
-      }, {
-        val: 3,
-        letter: 'a',
-        check: false,
-        seat: false
-      }, {
-        val: 4,
-        letter: 'a',
-        check: false,
-        seat: false
-      }, {
-        val: 5,
-        letter: 'a',
-        check: false,
-        seat: false
-      }, {
-        val: 6,
-        letter: 'a',
-        check: false,
-        seat: false
-      }
-    ],
-    [
-      {
-        val: 1,
-        letter: 'b',
-        check: false,
-        seat: true
-      }, {
-        val: 2,
-        letter: 'b',
-        check: false,
-        seat: true
-      }, {
-        val: 3,
-        letter: 'b',
-        check: false,
-        seat: true
-      }, {
-        val: 4,
-        letter: 'b',
-        check: false,
-        seat: false
-      }, {
-        val: 5,
-        letter: 'b',
-        check: false,
-        seat: false
-      }, {
-        val: 6,
-        letter: 'b',
-        check: false,
-        seat: false
-      }
-    ],
-    [
-      {
-        val: 1,
-        letter: 'c',
-        check: false,
-        seat: false
-      }, {
-        val: 2,
-        letter: 'c',
-        check: false,
-        seat: false
-      }, {
-        val: 3,
-        letter: 'c',
-        check: false,
-        seat: false
-      }, {
-        val: 4,
-        letter: 'c',
-        check: false,
-        seat: false
-      }, {
-        val: 5,
-        letter: 'c',
-        check: false,
-        seat: false
-      }, {
-        val: 6,
-        letter: 'c',
-        check: false,
-        seat: false
-      }
-    ],
-    [
-      {
-        val: 1,
-        letter: 'd',
-        check: false,
-        seat: false
-      }, {
-        val: 2,
-        letter: 'd',
-        check: false,
-        seat: false
-      }, {
-        val: 3,
-        letter: 'd',
-        check: false,
-        seat: false
-      }, {
-        val: 4,
-        letter: 'd',
-        check: false,
-        seat: true
-      }, {
-        val: 5,
-        letter: 'd',
-        check: false,
-        seat: true
-      }, {
-        val: 6,
-        letter: 'd',
-        check: false,
-        seat: false
-      }
-    ]
-  ];
+  public sala: any = new Asientos().getSala();
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,

@@ -24,7 +24,7 @@
     </ion-segment-button>
 
     <ion-segment-button value="asientos">
-      <ion-icon name="videocam"></ion-icon>
+      <ion-icon name="apps"></ion-icon>
     </ion-segment-button>
 
     <ion-segment-button value="productos">
@@ -84,7 +84,7 @@
         <div *ngFor="let fila of sala; let i = index">
           <div *ngFor="let asiento of fila">
             <input type="checkbox" id="asiento_{{ asiento.letter + asiento.val }}"
-                  [disabled]="asiento.seat || boletosDisponibles <= 0"
+                  [disabled]="asiento.seat || (boletosDisponibles <= 0 && !asiento.check)"
                   [checked]="asiento.check"
                   (click)="seleccionaAsiento(asiento)">
             <label for="asiento_{{ asiento.letter + asiento.val }}" [ngClass]="{'en_uso': asiento.seat == true}">
