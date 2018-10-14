@@ -75,7 +75,8 @@ export class PedidoPage {
     } else {
       if (boleto.cantidad != 0) {
         boleto.cantidad--;
-        this.boletosDisponibles--;
+        this.boletosDisponibles = boleto.cantidad;
+        this.reseteaLugares()
       }
     }
   }
@@ -102,5 +103,13 @@ export class PedidoPage {
         this.boletosDisponibles--;
       }
     }
+  }
+  
+  reseteaLugares() {
+    this.sala.forEach(fila => {
+      fila.forEach(lugar => {
+        lugar.check = false;
+      });
+    });
   }
 }

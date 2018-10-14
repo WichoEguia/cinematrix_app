@@ -15,16 +15,17 @@
   <h2 padding>Selecciona tu función</h2>
   <ion-card *ngFor="let funcion of funciones">
 
-    <ion-card-content class="contenedor_funcion">
+    <ion-card-content class="contenedor_funcion" (click)="close(funcion)">
       <div>
         <p class="grande">Sala: {{ funcion.sala }}</p>
         <p class="grande">Fecha: {{funcion.fecha}}</p>
         <p class="grande">Hora: {{funcion.hora}}</p>
       </div>
 
-      <button ion-button clear (click)="close(funcion)">
+      <!-- <button ion-button icon-end (click)="close(funcion)">
         seleccionar
-      </button>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button> -->
     </ion-card-content>
 
   </ion-card>
