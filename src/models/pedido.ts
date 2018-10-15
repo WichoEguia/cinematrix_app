@@ -6,6 +6,7 @@ export class Pedido {
         public fecha_llegada: string,
         public estado: string,
         public asientos: string,
+        public monto: number,
         public usuario: string,
         public funcion: string,
         public boletos: any,

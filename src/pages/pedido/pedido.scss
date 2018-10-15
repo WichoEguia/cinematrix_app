@@ -146,4 +146,11 @@ page-pedido {
             white-space: initial !important;
         }
     }
+
+    #total_pagar {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: lighter;
+        text-align: right;
+    }
 }

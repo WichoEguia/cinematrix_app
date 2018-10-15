@@ -23,8 +23,6 @@ export class PedidoPage {
   public boletosDisponibles: number = 0;
   public sala: any = new Asientos().getSala();
   public pedido: Pedido;
-  public pagoBooletos: number = 0;
-  public pagoProductos: number = 0;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -71,7 +69,7 @@ export class PedidoPage {
       }
     );
 
-    this.pedido = new Pedido('', this.obtenerFecha(), true, this.funcion.fecha, 'vigente', '', this.identity._id, this.funcion._id, [], []);
+    this.pedido = new Pedido('', this.obtenerFecha(), true, this.funcion.fecha, 'vigente', '', 0, this.identity._id, this.funcion._id, [], []);
   }
 
   cantidadBoleto(id, agregar) {
@@ -139,8 +137,8 @@ export class PedidoPage {
   actualizaPedido() {
     this.pedido.fecha_creacion = this.obtenerFecha();
     this.pedido.asientos = this.obtenerAsientosSeleccionados();
-    this.obtenerBoletosSeleccionados();
-    this.obtenerProductosSeleccionados();
+    let montoBoletos = this.obtenerBoletosSeleccionados();
+    let montoProductos = this.obtenerProductosSeleccionados();
 
     this.boletosSeleccionados.forEach(boletos => {
       this.pedido.boletos.push(boletos.id + ',' + boletos.cantidad);
@@ -148,7 +146,10 @@ export class PedidoPage {
 
     this.productosSeleccionados.forEach(producto => {
       this.pedido.productos.push(producto.id + ',' + producto.cantidad)
-    })
+    });
+
+    let subTotal = montoBoletos + montoProductos;
+    this.pedido.monto = Math.round((subTotal + subTotal * .16) * 100) / 100;
 
     console.log(this.pedido);
   }
@@ -169,22 +170,36 @@ export class PedidoPage {
 
   obtenerBoletosSeleccionados() {
     this.boletosSeleccionados = [];
-    
+    let montoBoletos = 0;
+
     this.boletos.forEach(boleto => {
       if (boleto.cantidad > 0) {
         this.boletosSeleccionados.push(boleto);
+
+        for (let i = 0; i < boleto.cantidad; i++) {
+          montoBoletos += parseFloat(boleto.precio);
+        }
       }
     });
+
+    return montoBoletos
   }
 
   obtenerProductosSeleccionados() {
     this.productosSeleccionados = [];
+    let montoProductos = 0;
 
     this.productos.forEach(producto => {
       if (producto.cantidad > 0) {
         this.productosSeleccionados.push(producto);
+
+        for (let i = 0; i < producto.cantidad; i++) {
+          montoProductos += parseFloat(producto.precio);
+        }
       }
     });
+
+    return montoProductos
   }
 
   confirmarPedido() {
