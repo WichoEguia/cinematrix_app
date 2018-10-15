@@ -12,11 +12,33 @@
   </ion-card>
 
   <div padding>
-    <p>{{ pelicula.sinopsis }}</p>
-    <p>Duración: {{ pelicula.duracion }}</p>
-    <p>Clasificación: {{ pelicula.clasificacion }}</p>
-    <p>Genero: {{ pelicula.genero }}</p>
-  
+    <ion-list>
+      <ion-item>
+        <div class="info_pelicula_item">
+          <p>Sinopsis</p>
+          <p>{{ pelicula.sinopsis }}</p>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div class="info_pelicula_item">
+          <p>Duracion</p>
+          <p>{{ pelicula.duracion }}</p>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div class="info_pelicula_item">
+          <p>Clasificación</p>
+          <p>{{ pelicula.clasificacion }}</p>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div class="info_pelicula_item">
+          <p>Genero</p>
+          <p>{{ pelicula.genero }}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+    
     <button ion-button full (click)="verFuncionesPelicula(pelicula)">Funciones disponibles</button>
   </div>
 </ion-content>

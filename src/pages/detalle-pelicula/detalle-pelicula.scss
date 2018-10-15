@@ -26,4 +26,22 @@ page-detalle-pelicula {
             color: #fff;
         }
     }
+
+    .info_pelicula_item {
+        display: flex;
+
+        p {
+            color: #fff !important;
+
+            &:first-child {
+                flex: 1;
+                color: color($colors, primary, base) !important;
+            }
+
+            &:last-child {
+                flex: 2;
+                white-space: initial !important;
+            }
+        }
+    }
 }

@@ -31,8 +31,7 @@
       <ion-icon name="cart"></ion-icon>
     </ion-segment-button>
 
-
-    <ion-segment-button value="pago">
+    <ion-segment-button value="pago" (click)="actualizaPedido()">
       <ion-icon name="card"></ion-icon>
     </ion-segment-button>
   </ion-segment>
@@ -95,7 +94,7 @@
       </div>
     </div>
 
-    <div *ngSwitchCase="'productos'" padding>
+    <div *ngSwitchCase="'productos'">
       <h2>Selecciona tu snack</h2>
       
       <ion-card padding class="contenedor_producto" *ngFor="let producto of productos">
@@ -128,7 +127,53 @@
     </div>
 
     <div *ngSwitchCase="'pago'" padding>
-      <h2>Termina el pago</h2>
+      <h2>Revisa tu pedido</h2>
+      <div padding>
+        <ion-list>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Pelicula</p>
+              <p>{{ funcion.pelicula.titulo }}</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Idioma</p>
+              <p>{{ funcion.idioma }}</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Sala</p>
+              <p>{{ funcion.sala }}</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Fecha</p>
+              <p>{{ funcion.fecha }} a las {{ funcion.hora }}</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Boletos</p>
+              <p>{{ pedido.boletos.length }}</p>
+            </div>
+          </ion-item>
+          <ion-item>
+            <div class="info_pelicula_item">
+              <p>Productos</p>
+              <div style="flex: 2;">
+                <p style="color: #fff;" *ngFor="let producto of productos">
+                  {{ producto.cantidad }}, {{ producto.nombre }}
+                </p>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      
+        <button ion-button full (click)="confirmarPedido(pelicula)">confirmar pedido</button>
+      </div>
     </div>
   </div>
 </ion-content>

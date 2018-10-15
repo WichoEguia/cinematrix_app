@@ -75,6 +75,8 @@ page-pedido {
 
     .precio_producto {
         color: color($colors, primary, base);
+        font-weight: bolder;
+        font-size: 1.7rem;
     }
 
     .vista_asientos > div {
@@ -122,6 +124,24 @@ page-pedido {
 
         &:checked + label {
             background: color($colors, blue, base);
+        }
+    }
+
+    .info_pelicula_item {
+        display: flex;
+
+        & > p {
+            color: #fff !important;
+
+            &:first-child {
+                flex: 1;
+                color: color($colors, primary, base) !important;
+            }
+
+            &:last-child {
+                flex: 2;
+                white-space: initial !important;
+            }
         }
     }
 }

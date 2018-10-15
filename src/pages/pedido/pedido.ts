@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, AlertController }
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { GLOBAL } from '../../providers/global';
 import { Asientos } from '../../models/asientos';
+import { Pedido } from '../../models/pedido';
 
 @IonicPage()
 @Component({
@@ -20,11 +21,13 @@ export class PedidoPage {
   public productosSeleccionados: any;
   public boletosDisponibles: number = 0;
   public sala: any = new Asientos().getSala();
+  public pedido: Pedido;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public pedp: PedidosProvider,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController) {
     this.funcion = this.navParams.get('dataFuncion');
     this.url = GLOBAL.url;
 
@@ -64,6 +67,8 @@ export class PedidoPage {
         console.log(err);
       }
     );
+
+    this.pedido = new Pedido('', this.obtenerFecha(), true, this.funcion.fecha, 'vigente', '', this.identity._id, this.funcion._id, [], []);
   }
 
   cantidadBoleto(id, agregar) {
@@ -111,5 +116,107 @@ export class PedidoPage {
         lugar.check = false;
       });
     });
+  }
+
+  obtenerFecha() {
+    let today: any = new Date();
+    let dd: any = today.getDate();
+    let mm: any = today.getMonth() + 1;
+
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    return dd + '-' + mm + '-' + yyyy;
+  }
+
+  actualizaPedido() {
+    // console.log(this.funcion);
+    // console.log(this.boletos);
+    // console.log(this.sala);
+    // console.log(this.productos);
+
+    this.pedido.fecha_creacion = this.obtenerFecha();
+    this.pedido.asientos = this.obtenerAsientosSeleccionados();
+    this.pedido.boletos = this.obtenerBoletosSeleccionados();
+    this.pedido.productos = this.obtenerProductosSeleccionados();
+    // console.log(this.pedido);
+  }
+
+  obtenerAsientosSeleccionados() {
+    let asientosSeleccionados = [];
+    
+    this.sala.forEach(fila => {
+      fila.forEach(asiento => {
+        if (asiento.check) {
+          asientosSeleccionados.push(asiento);
+        }
+      });
+    });
+
+    return JSON.stringify(asientosSeleccionados)
+  }
+
+  obtenerBoletosSeleccionados() {
+    let boletosSeleccionados = [];
+
+    this.boletos.forEach(boleto => {
+      if (boleto.cantidad > 0) {
+        boletosSeleccionados.push(boleto.id + ',' + boleto.cantidad);
+      }
+    });
+
+    return boletosSeleccionados
+  }
+
+  obtenerProductosSeleccionados() {
+    let productosSeleccionados = [];
+
+    this.productos.forEach(producto => {
+      if (producto.cantidad > 0) {
+        productosSeleccionados.push(producto.id + ',' + producto.cantidad);
+      }
+    });
+
+    return productosSeleccionados
+  }
+
+  confirmarPedido() {
+    let asientos = JSON.parse(this.pedido.asientos);
+
+    if (this.pedido.boletos.length > 0){
+      if (this.boletosDisponibles == 0) {
+        console.log('Sigue al pago');
+      } else {
+        this.alertCtrl.create({
+          title: 'UPS...',
+          subTitle: 'Selecciona todos tus lugares',
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                this.paso = 'asientos';
+              }
+            }
+          ]
+        }).present();
+      }
+    } else {
+      this.alertCtrl.create({
+        title: 'UPS...',
+        subTitle: 'Selecciona tus boletos y tus asientos',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.paso = 'boletos';
+            }
+          }
+        ]
+      }).present();
+    }
   }
 }
