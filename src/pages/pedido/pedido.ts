@@ -134,16 +134,10 @@ export class PedidoPage {
   }
 
   actualizaPedido() {
-    // console.log(this.funcion);
-    // console.log(this.boletos);
-    // console.log(this.sala);
-    // console.log(this.productos);
-
     this.pedido.fecha_creacion = this.obtenerFecha();
     this.pedido.asientos = this.obtenerAsientosSeleccionados();
     this.pedido.boletos = this.obtenerBoletosSeleccionados();
     this.pedido.productos = this.obtenerProductosSeleccionados();
-    // console.log(this.pedido);
   }
 
   obtenerAsientosSeleccionados() {
@@ -185,7 +179,7 @@ export class PedidoPage {
   }
 
   confirmarPedido() {
-    let asientos = JSON.parse(this.pedido.asientos);
+    console.log(this.pedido);
 
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
