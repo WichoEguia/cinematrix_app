@@ -131,8 +131,6 @@ page-pedido {
         display: flex;
 
         & > p {
-            color: #fff !important;
-
             &:first-child {
                 flex: 1;
                 color: color($colors, primary, base) !important;
@@ -140,8 +138,12 @@ page-pedido {
 
             &:last-child {
                 flex: 2;
-                white-space: initial !important;
             }
+        }
+
+        & p {
+            color: #fff !important;
+            white-space: initial !important;
         }
     }
 }

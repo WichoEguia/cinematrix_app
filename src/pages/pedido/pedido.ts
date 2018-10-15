@@ -18,10 +18,13 @@ export class PedidoPage {
   public url: string;
   public token: string;
   public identity: any;
-  public productosSeleccionados: any;
+  public productosSeleccionados: any = [];
+  public boletosSeleccionados: any = [];
   public boletosDisponibles: number = 0;
   public sala: any = new Asientos().getSala();
   public pedido: Pedido;
+  public pagoBooletos: number = 0;
+  public pagoProductos: number = 0;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -136,8 +139,18 @@ export class PedidoPage {
   actualizaPedido() {
     this.pedido.fecha_creacion = this.obtenerFecha();
     this.pedido.asientos = this.obtenerAsientosSeleccionados();
-    this.pedido.boletos = this.obtenerBoletosSeleccionados();
-    this.pedido.productos = this.obtenerProductosSeleccionados();
+    this.obtenerBoletosSeleccionados();
+    this.obtenerProductosSeleccionados();
+
+    this.boletosSeleccionados.forEach(boletos => {
+      this.pedido.boletos.push(boletos.id + ',' + boletos.cantidad);
+    });
+
+    this.productosSeleccionados.forEach(producto => {
+      this.pedido.productos.push(producto.id + ',' + producto.cantidad)
+    })
+
+    console.log(this.pedido);
   }
 
   obtenerAsientosSeleccionados() {
@@ -155,31 +168,27 @@ export class PedidoPage {
   }
 
   obtenerBoletosSeleccionados() {
-    let boletosSeleccionados = [];
-
+    this.boletosSeleccionados = [];
+    
     this.boletos.forEach(boleto => {
       if (boleto.cantidad > 0) {
-        boletosSeleccionados.push(boleto.id + ',' + boleto.cantidad);
+        this.boletosSeleccionados.push(boleto);
       }
     });
-
-    return boletosSeleccionados
   }
 
   obtenerProductosSeleccionados() {
-    let productosSeleccionados = [];
+    this.productosSeleccionados = [];
 
     this.productos.forEach(producto => {
       if (producto.cantidad > 0) {
-        productosSeleccionados.push(producto.id + ',' + producto.cantidad);
+        this.productosSeleccionados.push(producto);
       }
     });
-
-    return productosSeleccionados
   }
 
   confirmarPedido() {
-    console.log(this.pedido);
+    console.log(this.boletos);
 
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
