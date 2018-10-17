@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { PayPal } from '@ionic-native/paypal';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -44,7 +45,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     UsuarioProvider,
     PeliculaProvider,
     FuncionesProvider,
-    PedidosProvider
+    PedidosProvider,
+    PayPal
   ]
 })
 export class AppModule {}

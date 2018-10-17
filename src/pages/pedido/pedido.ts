@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { GLOBAL } from '../../providers/global';
 import { Asientos } from '../../models/asientos';
@@ -23,12 +24,16 @@ export class PedidoPage {
   public boletosDisponibles: number = 0;
   public sala: any = new Asientos().getSala();
   public pedido: Pedido;
+  public payPalEnvironment: string = 'payPalEnvironmentSandbox';
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     public pedp: PedidosProvider,
     public modalCtrl: ModalController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private payPal: PayPal
+  ) {
     this.funcion = this.navParams.get('dataFuncion');
     this.url = GLOBAL.url;
 
@@ -204,11 +209,10 @@ export class PedidoPage {
   }
 
   confirmarPedido() {
-    console.log(this.boletos);
-
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
-        console.log('Sigue al pago');
+        // Termina el pago
+        this.terminarPago();
       } else {
         this.alertCtrl.create({
           title: 'UPS...',
@@ -237,5 +241,27 @@ export class PedidoPage {
         ]
       }).present();
     }
+  }
+
+  terminarPago() {
+    this.payPal.init({
+      PayPalEnvironmentProduction: GLOBAL.payPalEnvironmentProduction,
+      PayPalEnvironmentSandbox: GLOBAL.payPalEnvironmentSandbox
+    }).then(() => {
+      this.payPal.prepareToRender(
+        this.payPalEnvironment, new PayPalConfiguration({})
+      ).then(() => {
+        let payment = new PayPalPayment('0.50', 'MXN', 'Pago CINEMATRIX', 'sale');
+        this.payPal.renderSinglePaymentUI(payment).then((res) => {
+          console.log(`Pago exitoso. State: ${res.response.state}`);
+        }, () => {
+          console.log('Error or render dialog closed without being successful')
+        });
+      }, () => {
+        console.log('Error in configuration');
+      });
+    }, (err) => {
+      console.log(err);
+    });
   }
 }
