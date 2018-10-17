@@ -69,7 +69,7 @@ export class PedidoPage {
       }
     );
 
-    this.pedido = new Pedido('', this.obtenerFecha(), true, this.funcion.fecha, 'vigente', '', 0, this.identity._id, this.funcion._id, [], []);
+    this.pedido = new Pedido('', this.obtenerFecha(), true, this.funcion.fecha, 'vigente', '', 0, 0, 0, this.identity._id, this.funcion._id, [], []);
   }
 
   cantidadBoleto(id, agregar) {
@@ -148,8 +148,9 @@ export class PedidoPage {
       this.pedido.productos.push(producto.id + ',' + producto.cantidad)
     });
 
-    let subTotal = montoBoletos + montoProductos;
-    this.pedido.monto = Math.round((subTotal + subTotal * .16) * 100) / 100;
+    this.pedido.subtotal = montoBoletos + montoProductos;
+    this.pedido.iva = Math.round((this.pedido.subtotal * 0.16) * 100) / 100;
+    this.pedido.monto = this.pedido.subtotal + this.pedido.iva;
 
     console.log(this.pedido);
   }
