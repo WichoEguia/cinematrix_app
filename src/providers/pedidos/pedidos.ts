@@ -29,4 +29,13 @@ export class PedidosProvider {
     const headers = new HttpHeaders({ 'token': this.getToken() });
     return this.http.get(this.url + 'productos/ver', { headers });
   }
+
+  postPedido(pedido) {
+    const params = JSON.stringify(pedido);
+    const headers = new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.getToken()
+    });
+    return this.http.post(this.url + 'pedidos/crear', params, { headers });
+  }
 }

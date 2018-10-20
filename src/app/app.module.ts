@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { DetallePeliculaPage } from '../pages/detalle-pelicula/detalle-pelicula';
 import { FuncionesPage } from '../pages/funciones/funciones';
 import { PedidoPage } from '../pages/pedido/pedido';
+import { QrPage } from '../pages/qr/qr';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +24,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     HomePage,
     DetallePeliculaPage,
     FuncionesPage,
-    PedidoPage
+    PedidoPage,
+    QrPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     HomePage,
     DetallePeliculaPage,
     FuncionesPage,
-    PedidoPage
+    PedidoPage,
+    QrPage
   ],
   providers: [
     StatusBar,

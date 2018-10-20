@@ -5,6 +5,7 @@ import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { GLOBAL } from '../../providers/global';
 import { Asientos } from '../../models/asientos';
 import { Pedido } from '../../models/pedido';
+import { QrPage} from '../qr/qr';
 
 @IonicPage()
 @Component({
@@ -156,8 +157,6 @@ export class PedidoPage {
     this.pedido.subtotal = montoBoletos + montoProductos;
     this.pedido.iva = Math.round((this.pedido.subtotal * 0.16) * 100) / 100;
     this.pedido.monto = this.pedido.subtotal + this.pedido.iva;
-
-    console.log(this.pedido);
   }
 
   obtenerAsientosSeleccionados() {
@@ -211,8 +210,8 @@ export class PedidoPage {
   confirmarPedido() {
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
-        // Termina el pago
-        this.terminarPago();
+        this.guardarPedido(); // Guarda pedido en BD, mover a pago realizado
+        // this.terminarPago();
       } else {
         this.alertCtrl.create({
           title: 'UPS...',
@@ -254,6 +253,7 @@ export class PedidoPage {
         let payment = new PayPalPayment('0.50', 'MXN', 'Pago CINEMATRIX', 'sale');
         this.payPal.renderSinglePaymentUI(payment).then((res) => {
           console.log(`Pago exitoso. State: ${res.response.state}`);
+          this.guardarPedido();
         }, () => {
           console.log('Error or render dialog closed without being successful')
         });
@@ -263,5 +263,19 @@ export class PedidoPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  guardarPedido() {
+    console.log(this.pedido);
+
+    this.pedp.postPedido(this.pedido).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.navCtrl.push(QrPage, res);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 }
