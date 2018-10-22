@@ -268,10 +268,10 @@ export class PedidoPage {
   guardarPedido() {      
     this.pedp.postPedido(this.pedido).subscribe(
       (res: any) => {
+        console.log(res);
         this.navCtrl.push(QrPage, {
-          pedidoId : res.pedido._id,
-          productosSeleccionados: this.productosSeleccionados,
-          boletosSeleccionados: this.boletosSeleccionados
+          pedido : res.pedido,
+          funcion: this.funcion
         });
       },
       (err: any) => {

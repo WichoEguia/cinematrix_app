@@ -14,16 +14,13 @@
 
 
 <ion-content padding>
-  <qrcode 
-    [qrdata]="IdPedidoQR"
-    [size]="256"
-    [level]="'M'"
-    [colorlight]="'#191919'"
-    [colordark]="'#E53E43'"
-  >
-  </qrcode>
+  <div id="contenedor_QR">
+    <qrcode [qrdata]="IdPedidoQR" [size]="185" [level]="'M'">
+    </qrcode>
+  </div>
 
-  <!-- <h2>Tu pedido</h2>
+  <h2>Tu pedido</h2>
+  <p class="texto_rojo">* Deja que el encargado escanee este codigo para obtener tus productos y boletos</p>
   <div>
     <ion-list>
       <ion-item>
@@ -50,43 +47,6 @@
           <p>{{ funcion.fecha }} a las {{ funcion.hora }}</p>
         </div>
       </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Boletos</p>
-          <div style="flex: 2;">
-            <p style="color: #fff;" *ngFor="let boleto of boletosSeleccionados">
-              <span *ngIf="boleto.cantidad > 0">
-                {{ boleto.nombre }}, {{ boleto.cantidad }}
-              </span>
-            </p>
-            <p *ngIf="boletosSeleccionados.length == 0">
-              N/A
-            </p>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Productos</p>
-          <div style="flex: 2;">
-            <p style="color: #fff;" *ngFor="let producto of productosSeleccionados">
-              <span *ngIf="producto.cantidad > 0">
-                {{ producto.nombre }}, {{ producto.cantidad }}
-              </span>
-            </p>
-            <p *ngIf="productosSeleccionados.length == 0">
-              N/A
-            </p>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>IVA (16 %)</p>
-          <p>$ {{ pedido.iva }}</p>
-        </div>
-      </ion-item>
     </ion-list>
-    <p id="total_pagar">Total: $ {{ pedido.monto }}</p>
-  </div> -->
+  </div>
 </ion-content>

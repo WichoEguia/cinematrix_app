@@ -11,16 +11,15 @@ import { GLOBAL } from '../../providers/global';
 export class QrPage {
   public pedido: any;
   public IdPedidoQR: string;
-  public productosSeleccionados: any;
-  public boletosSeleccionados: any;
+  public funcion: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public pedp: PedidosProvider
   ) {
-    this.IdPedidoQR = this.navParams.get('pedidoId');
-    this.boletosSeleccionados = this.navParams.get('boletosSeleccionados');
-    this.productosSeleccionados = this.navParams.get('boletosSeleccionados');
+    this.pedido = this.navParams.get('pedido');
+    this.IdPedidoQR = this.pedido._id;
+    this.funcion = this.navParams.get('funcion');
   }
 }
