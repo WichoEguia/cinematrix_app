@@ -210,7 +210,8 @@ export class PedidoPage {
   confirmarPedido() {
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
-        this.guardarPedido(); // Guarda pedido en BD, mover a pago realizado
+        // Guarda pedido en BD, mover a pago realizado
+        this.guardarPedido();
         // this.terminarPago();
       } else {
         this.alertCtrl.create({
