@@ -265,13 +265,14 @@ export class PedidoPage {
     });
   }
 
-  guardarPedido() {
-    console.log(this.pedido);
-
+  guardarPedido() {      
     this.pedp.postPedido(this.pedido).subscribe(
       (res: any) => {
-        // console.log(res);
-        this.navCtrl.push(QrPage, res);
+        this.navCtrl.push(QrPage, {
+          pedidoId : res.pedido._id,
+          productosSeleccionados: this.productosSeleccionados,
+          boletosSeleccionados: this.boletosSeleccionados
+        });
       },
       (err: any) => {
         console.log(err);

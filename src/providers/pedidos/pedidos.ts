@@ -38,4 +38,9 @@ export class PedidosProvider {
     });
     return this.http.post(this.url + 'pedidos/crear', params, { headers });
   }
+
+  getPedido(idPedido) {
+    const headers = new HttpHeaders({ 'token': this.getToken() });
+    return this.http.get(this.url + 'pedidos/ver/' + idPedido, { headers });
+  }
 }

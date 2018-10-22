@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the QrPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PedidosProvider } from '../../providers/pedidos/pedidos';
+import { GLOBAL } from '../../providers/global';
 
 @IonicPage()
 @Component({
@@ -14,12 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'qr.html',
 })
 export class QrPage {
+  public pedido: any;
+  public IdPedidoQR: string;
+  public productosSeleccionados: any;
+  public boletosSeleccionados: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public pedp: PedidosProvider
+  ) {
+    this.IdPedidoQR = this.navParams.get('pedidoId');
+    this.boletosSeleccionados = this.navParams.get('boletosSeleccionados');
+    this.productosSeleccionados = this.navParams.get('boletosSeleccionados');
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad QrPage');
-  }
-
 }
