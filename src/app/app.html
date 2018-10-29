@@ -11,7 +11,7 @@
         <ion-icon name="{{ p.icon }}" style="margin-right: 10px"></ion-icon>
         {{ p.title }}
       </button>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="logOut()">
+      <button menuClose ion-item (click)="logOut()">
         <ion-icon name="exit" style="margin-right: 10px"></ion-icon>
         Salir
       </button>
