@@ -1,4 +1,4 @@
-page-qr {
+page-atender-pedido {
     .info_pelicula_item {
         display: flex;
 
@@ -19,16 +19,9 @@ page-qr {
         }
     }
 
-    #contenedor_QR {
-        background: #FFF;
-        padding: 30px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .texto_rojo {
-        color: color($colors, primary, base);
+    #pagado_txt {
+        color: color($colors, secondary, base) !important;
+        font-size: 2rem;
+        text-align: center;
     }
 }

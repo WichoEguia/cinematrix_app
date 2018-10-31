@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { PayPal } from '@ionic-native/paypal';
 import { QRCodeModule } from 'angularx-qrcode';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -10,6 +11,8 @@ import { DetallePeliculaPage } from '../pages/detalle-pelicula/detalle-pelicula'
 import { FuncionesPage } from '../pages/funciones/funciones';
 import { PedidoPage } from '../pages/pedido/pedido';
 import { QrPage } from '../pages/qr/qr';
+import { EscanerQrPage } from '../pages/escaner-qr/escaner-qr';
+import { AtenderPedidoPage } from "../pages/atender-pedido/atender-pedido";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +29,9 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     DetallePeliculaPage,
     FuncionesPage,
     PedidoPage,
-    QrPage
+    QrPage,
+    EscanerQrPage,
+    AtenderPedidoPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,9 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     DetallePeliculaPage,
     FuncionesPage,
     PedidoPage,
-    QrPage
+    QrPage,
+    EscanerQrPage,
+    AtenderPedidoPage
   ],
   providers: [
     StatusBar,
@@ -51,7 +58,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     PeliculaProvider,
     FuncionesProvider,
     PedidosProvider,
-    PayPal
+    PayPal,
+    BarcodeScanner
   ]
 })
 export class AppModule {}
