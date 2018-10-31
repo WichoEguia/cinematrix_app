@@ -9,6 +9,7 @@ import { PedidosProvider } from "../../providers/pedidos/pedidos";
 })
 export class AtenderPedidoPage {
   public pedido: any;
+  public asientos: any;
 
   constructor(
     public navCtrl: NavController,
@@ -16,6 +17,7 @@ export class AtenderPedidoPage {
     public pedidosProvide: PedidosProvider,
     public alertCtrl: AlertController
   ) {
-    this.pedido = this.navParams.get('pedido');
+    this.pedido = JSON.parse(this.navParams.get('pedido'));
+    this.asientos = JSON.parse(this.pedido.asientos);
   }
 }

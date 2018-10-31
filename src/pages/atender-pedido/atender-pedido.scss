@@ -1,3 +1,27 @@
 page-atender-pedido {
+    .info_pelicula_item {
+        display: flex;
 
+        & > p {
+            &:first-child {
+                flex: 1;
+                color: color($colors, primary, base) !important;
+            }
+
+            &:last-child {
+                flex: 2;
+            }
+        }
+
+        & p {
+            color: #fff !important;
+            white-space: initial !important;
+        }
+    }
+
+    #pagado_txt {
+        color: color($colors, secondary, base) !important;
+        font-size: 2rem;
+        text-align: center;
+    }
 }

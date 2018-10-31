@@ -1,16 +1,82 @@
-<!--
-  Generated template for the AtenderPedidoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-title>Atender Pedido</ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  {{ pedido }}
+  <ion-list>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Cliente</p>
+        <p>{{ pedido.usuario.nombre }}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Pelicula</p>
+        <p>{{ pedido.funcion.pelicula.titulo }}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Idioma</p>
+        <p>{{ pedido.funcion.idioma }}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Sala</p>
+        <p>{{ pedido.funcion.sala }}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Fecha</p>
+        <p>{{ pedido.funcion.fecha }} a las {{ pedido.funcion.hora }}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Boletos</p>
+        <div style="flex: 2;">
+          <!-- <p style="color: #fff;" *ngFor="let boleto of boletosSeleccionados">
+            <span *ngIf="boleto.cantidad > 0">
+              {{ boleto.nombre }} x {{ boleto.cantidad }}
+            </span>
+          </p>
+          <p *ngIf="boletosSeleccionados.length == 0">
+            N/A
+          </p> -->
+          <p style="color:#fff;">
+            boletos x {{ pedido.boletos.length }}
+          </p>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Productos</p>
+        <div style="flex: 2;">
+          <p style="color: #fff;" *ngIf="pedido.productos.length > 0">
+            productos x {{ pedido.productos }}
+          </p>
+          <p *ngIf="pedido.productos.length == 0">
+            N/A
+          </p>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="info_pelicula_item">
+        <p>Asientos</p>
+        <div style="flex: 2;">
+          <p style="color: #fff;" *ngFor="let asiento of asientos">
+            lugar {{ asiento.letter | uppercase }}{{ asiento.val }}
+          </p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <p id="pagado_txt">PAGADO</p>
 </ion-content>
