@@ -43,4 +43,9 @@ export class PedidosProvider {
     const headers = new HttpHeaders({ 'token': this.getToken() });
     return this.http.get(this.url + 'pedidos/ver/' + idPedido, { headers });
   }
+
+  actualizaEstadoPedido(id, nuevoEstado) {
+    const headers = new HttpHeaders({ 'token': this.getToken() });
+    return this.http.get(`${this.url}pedido/proceso/${id}/${nuevoEstado}`)
+  }
 }

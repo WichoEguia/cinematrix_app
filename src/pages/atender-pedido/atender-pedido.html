@@ -5,13 +5,10 @@
 </ion-header>
 
 <ion-content padding>
+  <h2>Atendiendo a <span color="primary">{{ pedido.usuario.cliente }}</span></h2>
+
+  <p color="#fff">Detalle del pedido</p>
   <ion-list>
-    <ion-item>
-      <div class="info_pelicula_item">
-        <p>Cliente</p>
-        <p>{{ pedido.usuario.nombre }}</p>
-      </div>
-    </ion-item>
     <ion-item>
       <div class="info_pelicula_item">
         <p>Pelicula</p>
@@ -79,4 +76,5 @@
     </ion-item>
   </ion-list>
   <p id="pagado_txt">PAGADO</p>
+  <button ion-button block (click)="pedidoAtendido(pedido._id)">Atendido</button>
 </ion-content>

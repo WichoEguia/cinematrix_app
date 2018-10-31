@@ -19,5 +19,19 @@ export class AtenderPedidoPage {
   ) {
     this.pedido = JSON.parse(this.navParams.get('pedido'));
     this.asientos = JSON.parse(this.pedido.asientos);
+
+    this.pedidosProvide.actualizaEstadoPedido(this.navParams.get('pedido'), 'proceso')
+      .subscribe(
+        (res: any) => console.log(res),
+        (err: any) => console.log(err)
+      );
+  }
+
+  pedidoAtendido(idProducto) {
+    this.pedidosProvide.actualizaEstadoPedido(idProducto, 'listo')
+      .subscribe(
+        (res: any) => console.log(res),
+        (err: any) => console.log(err)
+      );
   }
 }
