@@ -12,6 +12,7 @@ import { FuncionesPage } from '../pages/funciones/funciones';
 import { PedidoPage } from '../pages/pedido/pedido';
 import { QrPage } from '../pages/qr/qr';
 import { EscanerQrPage } from '../pages/escaner-qr/escaner-qr';
+import { AtenderPedidoPage } from "../pages/atender-pedido/atender-pedido";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +30,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     FuncionesPage,
     PedidoPage,
     QrPage,
-    EscanerQrPage
+    EscanerQrPage,
+    AtenderPedidoPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     FuncionesPage,
     PedidoPage,
     QrPage,
-    EscanerQrPage
+    EscanerQrPage,
+    AtenderPedidoPage
   ],
   providers: [
     StatusBar,

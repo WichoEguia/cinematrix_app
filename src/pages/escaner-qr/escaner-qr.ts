@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
+import { AtenderPedidoPage } from '../atender-pedido/atender-pedido';
+// import { AtenderPedidoPage } from "../atender-pedido/atender-pedido";
 
 @IonicPage()
 @Component({
@@ -16,20 +18,46 @@ export class EscanerQrPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public barcodeScanner: BarcodeScanner,
-    public pedidoP: PedidosProvider
+    public pedidoP: PedidosProvider,
+    public toastCtrl: ToastController
   ) {
     this.pedido = null;
   }
 
   scan() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      let pedidoId = barcodeData.text;
-      this.pedidoP.getPedido(pedidoId).subscribe(
-        (res: any) => this.pedido = res.pedido,
-        (err: any) => console.log(err)
+    console.log("Realizando scan...");
+    this.barcodeScanner.scan().then((barcodeData) => {
+      // Success! Barcode data is here
+      console.log("result:", barcodeData.text);
+      console.log("format:", barcodeData.format);
+      console.log("cancelled:", barcodeData.cancelled);
+
+      this.pedidoP.getPedido(barcodeData.text).subscribe(
+        (res: any) => {
+          let stringPedido: string = JSON.stringify(res.pedidos);
+          this.navCtrl.push(AtenderPedidoPage, { pedido: stringPedido });
+        },
+        (err: any) => {
+          this.alertCtrl.create({
+            title: 'Error al obtener pedido',
+            subTitle: 'err.error.err.message',
+            buttons: ['ok']
+          }).present();
+        }
       );
-    }).catch(err => {
-      console.log('Error', err);
+      
+    }, (err) => {
+      // An error occurred
+      console.error("Error: ", err);
+      this.mostrar_toast("Error: " + err);
     });
+  }
+
+  mostrar_toast(mensaje: string) {
+    let toast = this.toastCtrl.create({
+      message: mensaje,
+      duration: 2500
+    });
+    toast.present();
   }
 }

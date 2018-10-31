@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>escanerQR</ion-title>
+    <ion-title>Escaner QR</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <button ion-button block (click)="scan()">Escanear QR</button>
 
-  <div *ngIf="pedido">
+  <!-- <div *ngIf="pedido">
     <ion-list>
       <ion-item>
         <div class="info_pelicula_item">
@@ -65,7 +65,7 @@
       </ion-item>
     </ion-list>
     <p id="total_pagar">Total: $ {{ pedido.monto }}</p>
-  </div>
+  </div> -->
 
   <div *ngIf="!pedido">
     <p>Escanea un pedido para continuar</p>
