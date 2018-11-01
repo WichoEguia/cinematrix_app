@@ -34,13 +34,13 @@ export class EscanerQrPage {
 
       this.pedidoP.getPedido(barcodeData.text).subscribe(
         (res: any) => {
-          let stringPedido: string = JSON.stringify(res.pedidos);
+          let stringPedido: string = JSON.stringify(res.pedido);
           this.navCtrl.push(AtenderPedidoPage, { pedido: stringPedido });
         },
         (err: any) => {
           this.alertCtrl.create({
             title: 'Error al obtener pedido',
-            subTitle: 'err.error.err.message',
+            subTitle: JSON.stringify(err),
             buttons: ['ok']
           }).present();
         }

@@ -6,6 +6,7 @@
 
 <ion-content padding>
   <h2>Atendiendo a <span color="primary">{{ pedido.usuario.nombre }}</span></h2>
+  <p>{{ pedido.usuari._id }}</p>
 
   <p color="#fff">Detalle del pedido</p>
   <ion-list>
@@ -56,7 +57,7 @@
         <p>Productos</p>
         <div style="flex: 2;">
           <p style="color: #fff;" *ngIf="pedido.productos.length > 0">
-            productos x {{ pedido.productos }}
+            productos x {{ pedido.productos.length }}
           </p>
           <p *ngIf="pedido.productos.length == 0">
             N/A
