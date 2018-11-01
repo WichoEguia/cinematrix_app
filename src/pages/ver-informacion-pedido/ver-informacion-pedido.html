@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Atender Pedido</ion-title>
+    <ion-title>Pedido</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Atendiendo a <span color="primary">{{ pedido.usuario.nombre }}</span></h2>
-  <p>{{ pedido.usuari._id }}</p>
-
-  <p color="#fff">Detalle del pedido</p>
+<ion-content padding class="card-background-page">
+  <ion-card>
+    <img src="{{ url }}imagen/pelicula/{{pedido.funcion.pelicula.image}}?token={{ token }}" />
+    <div class="card-title">{{ pedido.funcion.pelicula.titulo }}</div>
+    <div class="card-subtitle">{{ pedido.funcion.pelicula.director }}</div>
+  </ion-card>
+  
+  <h2 color="#fff">Detalle del pedido</h2>
   <ion-list>
     <ion-item>
       <div class="info_pelicula_item">
@@ -76,5 +79,10 @@
       </div>
     </ion-item>
   </ion-list>
-  <h2 id="pagado_txt">PAGADO</h2>
+  <h2>ESTADO: <span id="estado">{{ pedido.estado | uppercase }}</span></h2>
+  
+  <div id="contenedor_QR" *ngIf="pedido.estado != 'listo'">
+    <qrcode [qrdata]="pedido._id" [size]="185" [level]="'M'">
+    </qrcode>
+  </div>
 </ion-content>

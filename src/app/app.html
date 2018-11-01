@@ -11,6 +11,10 @@
         <ion-icon name="{{ p.icon }}" style="margin-right: 10px"></ion-icon>
         {{ p.title }}
       </button>
+      <button menuClose ion-item (click)="QREscanner()">
+        <ion-icon name="qr-scanner" style="margin-right: 10px"></ion-icon>
+        Escanear pedido
+      </button>
       <button menuClose ion-item (click)="logOut()">
         <ion-icon name="exit" style="margin-right: 10px"></ion-icon>
         Salir

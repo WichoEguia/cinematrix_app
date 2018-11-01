@@ -1,71 +1,14 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Escaner QR</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <button ion-button block (click)="scan()">Escanear QR</button>
-
-  <!-- <div *ngIf="pedido">
-    <ion-list>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Pelicula</p>
-          <p>{{ pedido.funcion.pelicula.titulo }}</p>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Idioma</p>
-          <p>{{ pedido.funcion.idioma }}</p>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Sala</p>
-          <p>{{ pedido.funcion.sala }}</p>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Fecha</p>
-          <p>{{ pedido.funcion.fecha }} a las {{ pedido.funcion.hora }}</p>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Boletos</p>
-          <div style="flex: 2;">
-            <p style="color: #fff;" *ngFor="let boleto of pedido.boletos">
-              <span *ngIf="boleto.cantidad > 0">
-                {{ boleto.nombre }}, {{ boleto.cantidad }}
-              </span>
-            </p>
-            <p *ngIf="boletosSeleccionados.length == 0">
-              N/A
-            </p>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item>
-        <div class="info_pelicula_item">
-          <p>Productos</p>
-          <div style="flex: 2;">
-            <p style="color: #fff;" *ngFor="let producto of pedido.producto">
-              <span *ngIf="producto.cantidad > 0">
-                {{ producto.cantidad }} x {{ producto.nombre }}
-              </span>
-            </p>
-            <p *ngIf="productosSeleccionados.length == 0">
-              N/A
-            </p>
-          </div>
-        </div>
-      </ion-item>
-    </ion-list>
-    <p id="total_pagar">Total: $ {{ pedido.monto }}</p>
-  </div> -->
 
   <div *ngIf="!pedido">
     <p>Escanea un pedido para continuar</p>
