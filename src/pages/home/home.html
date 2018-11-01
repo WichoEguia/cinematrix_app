@@ -1,4 +1,4 @@
-<ion-header *ngIf="up.getIdentity()">
+<ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -8,21 +8,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-header no-border-top *ngIf="!up.getIdentity()">
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="log_page">
-      <ion-segment-button value="login">
-        Entrar
-      </ion-segment-button>
-      <ion-segment-button value="logup">
-        Registrarse
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div *ngIf="up.getIdentity()">
+  <div>
     <ion-grid>
       <ion-row>
         <ion-col col-12 col-lg-12 *ngFor="let pelicula of peliculas">
@@ -45,56 +32,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
-
-  <div *ngIf="!up.getIdentity()">
-    <!-- <p style="font-size: 3rem; text-align: center;">{{ app_name }}</p> -->
-    <div id="app_logo" class="row" justify-content-center>
-      <img src="../../assets/imgs/cinematrix.png">
-    </div>
-
-    <div [ngSwitch]="log_page">
-      <!-- Sección de login -->
-      <div *ngSwitchCase="'login'">
-        <form #loginForm="ngForm" (ngSubmit)="submitLogin()">
-          <div class="field">
-            <input type="email" placeholder="Correo" #email="ngModel" name="email" [(ngModel)]="user.email">
-          </div>
-    
-          <div class="field">
-            <input type="password" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="user.password">
-          </div>
-    
-          <div padding>
-            <button type="submit" ion-button block round>Entrar</button>
-          </div>
-        </form>
-      </div>
-    
-      <!-- Sección de registro -->
-      <div *ngSwitchCase="'logup'">
-        <form #loginForm="ngForm" (ngSubmit)="submitRegister()">
-          <div class="field">
-            <input type="nombre" placeholder="Nombre" #nombre="ngModel" name="nombre" [(ngModel)]="user_register.nombre">
-          </div>
-    
-          <div class="field">
-            <input type="email" placeholder="Correo" #email="ngModel" name="email" [(ngModel)]="user_register.email">
-          </div>
-    
-          <div class="field">
-            <input type="password" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="user_register.password">
-          </div>
-
-          <div class="field">
-            <input type="password" placeholder="Confirma tu contraseña" name="password" [(ngModel)]="repassword">
-          </div>
-    
-          <div padding>
-            <button type="submit" ion-button block round>Entrar</button>
-          </div>
-        </form>
-      </div>
-    </div>
   </div>
 </ion-content>

@@ -7,6 +7,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
 import { GLOBAL } from '../providers/global';
 import { EscanerQrPage } from '../pages/escaner-qr/escaner-qr';
 import { HistorialPedidosPage } from "../pages/historial-pedidos/historial-pedidos";
+import { AuthPage } from '../pages/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +17,7 @@ export class MyApp {
   public showMenu: boolean;
   public app_name: string;
 
-  rootPage: any = HomePage;
+  rootPage: any = AuthPage;
 
   pages: Array<{title: string, component: any, icon: any}>;
 
@@ -59,5 +60,6 @@ export class MyApp {
   logOut() {
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
+    this.nav.setRoot(AuthPage);
   }
 }

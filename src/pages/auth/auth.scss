@@ -1,0 +1,25 @@
+page-auth {
+    .field {
+        input {
+            width: 100%;
+            border: none;
+            background: rgba(color($colors, dark, base), 0.5);
+            padding: 10px;
+            border-radius: 5px;
+
+            &:first-child {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    #app_logo {
+        width: 100%;
+
+        img {
+            height: 125px;
+            width: auto;
+            margin: 15px auto;
+        }
+    }
+}

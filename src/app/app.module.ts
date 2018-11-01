@@ -15,6 +15,7 @@ import { EscanerQrPage } from '../pages/escaner-qr/escaner-qr';
 import { AtenderPedidoPage } from "../pages/atender-pedido/atender-pedido";
 import { HistorialPedidosPage } from "../pages/historial-pedidos/historial-pedidos";
 import { VerInformacionPedidoPage } from "../pages/ver-informacion-pedido/ver-informacion-pedido";
+import { AuthPage } from '../pages/auth/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     EscanerQrPage,
     AtenderPedidoPage,
     HistorialPedidosPage,
-    VerInformacionPedidoPage
+    VerInformacionPedidoPage,
+    AuthPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { PedidosProvider } from '../providers/pedidos/pedidos';
     EscanerQrPage,
     AtenderPedidoPage,
     HistorialPedidosPage,
-    VerInformacionPedidoPage
+    VerInformacionPedidoPage,
+    AuthPage
   ],
   providers: [
     StatusBar,
