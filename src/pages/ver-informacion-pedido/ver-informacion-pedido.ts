@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PedidosProvider } from "../../providers/pedidos/pedidos";
 import { GLOBAL } from "../../providers/global";
-import { VerInformacionPedidoPage } from '../ver-informacion-pedido/ver-informacion-pedido';
 
 @IonicPage()
 @Component({
-  selector: 'page-historial-pedidos',
-  templateUrl: 'historial-pedidos.html',
+  selector: 'page-ver-informacion-pedido',
+  templateUrl: 'ver-informacion-pedido.html',
 })
-export class HistorialPedidosPage {
-  public pedidos: any;
+export class VerInformacionPedidoPage {
   public url: string;
+  public pedido: any;
+  public asientos: any;
   public token: string;
 
   constructor(
@@ -20,16 +20,8 @@ export class HistorialPedidosPage {
     public pedidosProvider: PedidosProvider
   ) {
     this.url = GLOBAL.url;
+    this.pedido = this.navParams.get('pedido');
+    this.asientos = JSON.parse(this.pedido.asientos);
     this.token = this.pedidosProvider.getToken();
-    this.pedidos = [];
-    
-    this.pedidosProvider.getPedidosUsuario().subscribe(
-      (res: any) => this.pedidos = res.pedidos,
-      (err: any) => console.log(err)
-    );
-  }
-
-  verInformacionPedido(pedido) {
-    this.navCtrl.push(VerInformacionPedidoPage, { pedido });
   }
 }

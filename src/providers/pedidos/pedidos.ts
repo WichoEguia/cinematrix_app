@@ -51,8 +51,6 @@ export class PedidosProvider {
 
   getPedidosUsuario() {
     let userdata = JSON.parse(this.getIdentity());
-    console.log(userdata._id);
-
     const headers = new HttpHeaders({ 'token': this.getToken() });
     return this.http.get(`${this.url}pedidos/usuario/${userdata._id}`, { headers });
   }
