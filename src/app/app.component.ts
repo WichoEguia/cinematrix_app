@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { GLOBAL } from '../providers/global';
 import { EscanerQrPage } from '../pages/escaner-qr/escaner-qr';
+import { HistorialPedidosPage } from "../pages/historial-pedidos/historial-pedidos";
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +31,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Cartelera', component: HomePage, icon: 'film' },
-      { title: 'Escaner QR', component: EscanerQrPage, icon: 'star' }
+      { title:'Historial de pedidos', component: HistorialPedidosPage, icon: 'clock' },
+      { title: 'Escaner QR', component: EscanerQrPage, icon: 'qr-scanner' }
     ];
   }
 

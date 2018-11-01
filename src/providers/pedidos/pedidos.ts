@@ -46,6 +46,14 @@ export class PedidosProvider {
 
   actualizaEstadoPedido(id, nuevoEstado) {
     const headers = new HttpHeaders({ 'token': this.getToken() });
-    return this.http.get(`${this.url}pedido/proceso/${id}/${nuevoEstado}`)
+    return this.http.get(`${this.url}pedido/proceso/${id}/${nuevoEstado}`, { headers });
+  }
+
+  getPedidosUsuario() {
+    let userdata = JSON.parse(this.getIdentity());
+    console.log(userdata._id);
+
+    const headers = new HttpHeaders({ 'token': this.getToken() });
+    return this.http.get(`${this.url}pedidos/usuario/${userdata._id}`, { headers });
   }
 }

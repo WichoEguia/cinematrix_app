@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>HistorialPedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let pedido of pedidos">
+      <img item-start style="width:80px;height:100px;" src="{{ url }}imagen/pelicula/{{pedido.funcion.pelicula.image}}?token={{ token }}">
+      <h2>{{ pedido.funcion.pelicula.titulo }}</h2>
+      <p style="color:#fff;">{{ pedido.funcion.fecha }} | {{ pedido.funcion.hora }}</p>
+      <br>
+      <p class="estado_pedido">{{ pedido.estado | uppercase }}</p>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="!pedidos.length > 0">
+    <p class="colorDanger">* No tienes pedidos pendientes o en proceso</p>
+  </div>
+</ion-content>

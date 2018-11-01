@@ -1,0 +1,15 @@
+page-historial-pedidos {
+    .estado_pedido {
+        background: color($colors, primary, base);
+        display: block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #FFF;
+        text-align: center;
+    }
+
+    .colorDanger {
+        color: color($colors, primary, base);
+        font-size: 1.5rem;
+    }
+}
