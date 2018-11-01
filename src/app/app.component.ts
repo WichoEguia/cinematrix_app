@@ -31,8 +31,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Cartelera', component: HomePage, icon: 'film' },
-      { title:'Historial de pedidos', component: HistorialPedidosPage, icon: 'clock' },
-      { title: 'Escaner QR', component: EscanerQrPage, icon: 'qr-scanner' }
+      { title:'Historial de pedidos', component: HistorialPedidosPage, icon: 'clock' }
+      // { title: 'Escaner QR', component: EscanerQrPage, icon: 'qr-scanner' }
     ];
   }
 
@@ -49,6 +49,11 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  QREscanner() {
+    this.menuCtrl.close();
+    this.nav.setRoot(EscanerQrPage);
   }
 
   logOut() {
