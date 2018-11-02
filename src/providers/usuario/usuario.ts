@@ -26,6 +26,11 @@ export class UsuarioProvider {
     return token;
   }
 
+  isAdmin() {
+    let userData = JSON.parse(this.getIdentity());
+    return userData.role == 'ADMIN_ROLE';
+  }
+
   userUpdate(user) {
     const params = JSON.stringify(user);
     const headers = new HttpHeaders({
