@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu id="myMenu" [content]="content">
   <ion-header>
     <ion-toolbar>
       <ion-title>{{ app_name }}</ion-title>
@@ -11,7 +11,7 @@
         <ion-icon name="{{ p.icon }}" style="margin-right: 10px"></ion-icon>
         {{ p.title }}
       </button>
-      <button menuClose ion-item (click)="QREscanner()">
+      <button menuClose ion-item (click)="QREscanner()" *ngIf="up.isAdmin()">
         <ion-icon name="qr-scanner" style="margin-right: 10px"></ion-icon>
         Escanear pedido
       </button>
