@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
 import { AtenderPedidoPage } from '../atender-pedido/atender-pedido';
-// import { AtenderPedidoPage } from "../atender-pedido/atender-pedido";
 
 @IonicPage()
 @Component({
@@ -35,6 +34,15 @@ export class EscanerQrPage {
       this.pedidoP.getPedido(barcodeData.text).subscribe(
         (res: any) => {
           let stringPedido: string = JSON.stringify(res.pedido);
+          // this.alertCtrl.create({
+          //   title: 'Exito al obtener pedido',
+          //   subTitle: stringPedido,
+          //   buttons: [{
+          //     text: 'ok',
+          //     handler: () => {
+          //     }
+          //   }]
+          // }).present();
           this.navCtrl.push(AtenderPedidoPage, { pedido: stringPedido });
         },
         (err: any) => {

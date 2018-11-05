@@ -1,5 +1,5 @@
-let ENV = 'dev';
-// let ENV = 'prod';
+// let ENV = 'dev';
+let ENV = 'prod';
 
 let url = ENV === 'dev' ? 'http://localhost:3000/' : 'https://cinematrix-api.herokuapp.com/';
 

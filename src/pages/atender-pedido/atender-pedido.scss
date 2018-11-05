@@ -24,4 +24,14 @@ page-atender-pedido {
         font-size: 2rem;
         text-align: center;
     }
+
+    .idUsuario {
+        background: color($colors, primary, base);
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    .primary {
+        color: color($colors, primary, base);
+    }
 }

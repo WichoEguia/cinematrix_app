@@ -18,12 +18,19 @@ export class AtenderPedidoPage {
     public alertCtrl: AlertController
   ) {
     this.pedido = JSON.parse(this.navParams.get('pedido'));
+    console.log(this.pedido);
     this.asientos = JSON.parse(this.pedido.asientos);
 
-    this.pedidosProvide.actualizaEstadoPedido(this.navParams.get('pedido'), 'proceso')
+    this.pedidosProvide.actualizaEstadoPedido(this.pedido._id, 'proceso')
       .subscribe(
-        (res: any) => console.log(res),
-        (err: any) => console.log(err)
+        (res: any) => {
+          console.log('Exito pedido');
+          console.log(res)
+        },
+        (err: any) => {
+          console.log('Error pedido');
+          console.log(err)
+        }
       );
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Nav, NavController, NavParams, MenuController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, AlertController, LoadingController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { GLOBAL } from '../../providers/global';

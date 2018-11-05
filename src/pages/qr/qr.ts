@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PedidosProvider } from '../../providers/pedidos/pedidos';
-import { GLOBAL } from '../../providers/global';
 
 @IonicPage()
 @Component({
