@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { PedidosProvider } from "../../providers/pedidos/pedidos";
 import { GLOBAL } from "../../providers/global";
 import { VerInformacionPedidoPage } from '../ver-informacion-pedido/ver-informacion-pedido';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -33,6 +34,13 @@ export class HistorialPedidosPage {
     this.pedidosProvider.getPedidosUsuario().subscribe(
       (res: any) => {
         loading.dismiss();
+
+        res.pedidos.forEach(pedido => {
+          let str =  pedido.fecha_creacion;
+          // console.log(moment(str).utc().format('YYYY-MM-DD HH:mm'));
+          pedido.fecha_creacion = moment(str).utc().format('YYYY-MM-DD HH:mm');
+        });
+
         this.pedidos = res.pedidos
       },
       (err: any) => {

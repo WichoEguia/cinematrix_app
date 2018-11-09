@@ -13,6 +13,7 @@
       <img item-start style="width:80px;height:100px;" src="{{ url }}imagen/pelicula/{{pedido.funcion.pelicula.image}}?token={{ token }}">
       <h2>{{ pedido.funcion.pelicula.titulo }}</h2>
       <p style="color:#fff;">{{ pedido.funcion.fecha }} | {{ pedido.funcion.hora }}</p>
+      <p style="color:#078f7d;">Fecha: {{ pedido.fecha_creacion }}</p>
       <br>
       <p class="estado_pedido">{{ pedido.estado | uppercase }}</p>
     </ion-item>
