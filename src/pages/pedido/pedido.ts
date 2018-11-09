@@ -211,8 +211,8 @@ export class PedidoPage {
     if (this.pedido.boletos.length > 0){
       if (this.boletosDisponibles == 0) {
         // Guarda pedido en BD, mover a pago realizado
-        this.guardarPedido();
-        // this.terminarPago();
+        // this.guardarPedido();
+        this.terminarPago();
       } else {
         this.alertCtrl.create({
           title: 'UPS...',

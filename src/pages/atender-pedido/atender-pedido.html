@@ -12,12 +12,6 @@
   <ion-list>
     <ion-item>
       <div class="info_pelicula_item">
-        <p>Id Pedido</p>
-        <p>{{ pedido._id }}</p>
-      </div>
-    </ion-item>
-    <ion-item>
-      <div class="info_pelicula_item">
         <p>Pelicula</p>
         <p>{{ pedido.funcion.pelicula.titulo }}</p>
       </div>
@@ -44,8 +38,10 @@
       <div class="info_pelicula_item">
         <p>Boletos</p>
         <div style="flex: 2;">
-          <p style="color:#fff;">
-            boletos x {{ pedido.boletos.length }}
+          <p style="color: #fff;" *ngFor="let boleto of boletos">
+            <span *ngIf="boleto.cantidad > 0">
+              {{ boleto.tipo }} x {{ boleto.cantidad }}
+            </span>
           </p>
         </div>
       </div>
@@ -54,11 +50,10 @@
       <div class="info_pelicula_item">
         <p>Productos</p>
         <div style="flex: 2;">
-          <p style="color: #fff;" *ngIf="pedido.productos.length > 0">
-            productos x {{ pedido.productos.length }}
-          </p>
-          <p *ngIf="pedido.productos.length == 0">
-            N/A
+          <p style="color: #fff;" *ngFor="let producto of productos">
+            <span *ngIf="producto.cantidad > 0">
+              {{ producto.tipo }} x {{ producto.cantidad }}
+            </span>
           </p>
         </div>
       </div>
@@ -67,12 +62,16 @@
       <div class="info_pelicula_item">
         <p>Asientos</p>
         <div style="flex: 2;">
-          <p style="color: #fff;" *ngFor="let asiento of asientos">
-            lugar {{ asiento.letter | uppercase }}{{ asiento.val }}
-          </p>
+          <span style="color: #fff;" *ngFor="let asiento of asientos">
+            {{ asiento.letter | uppercase }}{{ asiento.val }}
+          </span>
         </div>
       </div>
     </ion-item>
   </ion-list>
   <h2 id="pagado_txt">PAGADO</h2>
+
+  <button ion-button block (click)="pedidoAtendido(pedido._id)">
+    terminado
+  </button>
 </ion-content>

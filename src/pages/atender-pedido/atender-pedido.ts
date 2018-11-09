@@ -10,6 +10,8 @@ import { PedidosProvider } from "../../providers/pedidos/pedidos";
 export class AtenderPedidoPage {
   public pedido: any;
   public asientos: any;
+  public boletos: any;
+  public productos: any;
 
   constructor(
     public navCtrl: NavController,
@@ -32,13 +34,86 @@ export class AtenderPedidoPage {
           console.log(err)
         }
       );
+
+    this.contabilizaBoletos();
+    this.contabilizaProductos();
   }
 
-  pedidoAtendido(idProducto) {
-    this.pedidosProvide.actualizaEstadoPedido(idProducto, 'listo')
+  pedidoAtendido(idPedido) {
+    this.pedidosProvide.actualizaEstadoPedido(idPedido, 'listo')
       .subscribe(
-        (res: any) => console.log(res),
+        (res: any) => {
+          console.log(res);
+          this.alertCtrl.create({
+            title: 'Listo',
+            subTitle: 'El pedido ha sido atendido con exito',
+            buttons: [{
+              text: 'ok',
+              handler: () => {
+                this.navCtrl.pop();
+              }
+            }]
+          }).present();
+        },
         (err: any) => console.log(err)
       );
+  }
+
+  contabilizaBoletos() {
+    this.boletos = [
+      {
+        tipo: 'niño',
+        cantidad: 0
+      }, {
+        tipo: 'adulto',
+        cantidad: 0
+      }, {
+        tipo: 'anciano',
+        cantidad: 0
+      }
+    ];
+
+    this.pedido.boletos.forEach(boleto => {
+      switch (boleto.tipo) {
+        case 'niño':
+          this.boletos[0].cantidad++;
+          break;
+        case 'adulto':
+          this.boletos[1].cantidad++;
+          break;
+        case 'anciano':
+          this.boletos[2].cantidad++;
+          break;
+      }
+    });
+  }
+
+  contabilizaProductos() {
+    this.productos = [
+      {
+        tipo: 'Palomitas',
+        cantidad: 0
+      }, {
+        tipo: 'Galletas',
+        cantidad: 0
+      }, {
+        tipo: 'Chicles',
+        cantidad: 0
+      }
+    ];
+
+    this.pedido.productos.forEach(producto => {
+      switch (producto.nombre) {
+        case 'Palomitas':
+          this.productos[0].cantidad++;
+          break;
+        case 'Galletas':
+          this.productos[1].cantidad++;
+          break;
+        case 'Chicles':
+          this.productos[2].cantidad++;
+          break;
+      }
+    });
   }
 }
