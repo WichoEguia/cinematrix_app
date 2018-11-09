@@ -156,7 +156,7 @@ export class PedidoPage {
 
     this.pedido.subtotal = montoBoletos + montoProductos;
     this.pedido.iva = Math.round((this.pedido.subtotal * 0.16) * 100) / 100;
-    this.pedido.monto = this.pedido.subtotal + this.pedido.iva;
+    this.pedido.monto = Math.round((this.pedido.subtotal + this.pedido.iva) * 100) / 100;
   }
 
   obtenerAsientosSeleccionados() {

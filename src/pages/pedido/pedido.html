@@ -160,7 +160,7 @@
               <div style="flex: 2;">
                 <p style="color: #fff;" *ngFor="let boleto of boletosSeleccionados">
                   <span *ngIf="boleto.cantidad > 0">
-                    {{ boleto.nombre }}, {{ boleto.cantidad }}
+                    {{ boleto.nombre }} x {{ boleto.cantidad }}
                   </span>
                 </p>
                 <p *ngIf="boletosSeleccionados.length == 0">
@@ -175,7 +175,7 @@
               <div style="flex: 2;">
                 <p style="color: #fff;" *ngFor="let producto of productosSeleccionados">
                   <span *ngIf="producto.cantidad > 0">
-                    {{ producto.cantidad }} x {{ producto.nombre }}
+                    {{ producto.nombre }} x {{ producto.cantidad }}
                   </span>
                 </p>
                 <p *ngIf="productosSeleccionados.length == 0">
